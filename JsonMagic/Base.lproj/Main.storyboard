@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -717,7 +718,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7" customClass="PlainTextView" customModule="JsonMagic" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="1" width="498" height="653"/>
+                                            <rect key="frame" x="0.0" y="2" width="498" height="652"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -842,17 +843,17 @@
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3T-WP-q05">
-                                <rect key="frame" x="516" y="40" width="476" height="503"/>
+                                <rect key="frame" x="516" y="40" width="476" height="502"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Zh8-JC-lo2">
-                                    <rect key="frame" x="1" y="1" width="474" height="501"/>
+                                    <rect key="frame" x="1" y="1" width="474" height="500"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv" customClass="PlainTextView" customModule="JsonMagic" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="474" height="501"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="474" height="500"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="474" height="501"/>
+                                            <size key="minSize" width="474" height="500"/>
                                             <size key="maxSize" width="942" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -875,12 +876,12 @@ Have a nice day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="80b-vJ-Uw4">
-                                    <rect key="frame" x="459" y="1" width="16" height="501"/>
+                                    <rect key="frame" x="459" y="1" width="16" height="500"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-IB-u9G">
-                                <rect key="frame" x="922" y="556" width="69" height="28"/>
+                                <rect key="frame" x="922" y="555" width="69" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
                                     <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
@@ -896,7 +897,7 @@ Have a nice day.</string>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-xj-83m">
                                 <rect key="frame" x="18" y="11" width="49" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Result:" id="gfR-2C-jka">
-                                    <font key="font" metaFont="menuBar"/>
+                                    <font key="font" metaFont="menu" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -904,7 +905,7 @@ Have a nice day.</string>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N6e-ay-pMo">
                                 <rect key="frame" x="80" y="11" width="24" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" title="---" id="WeL-No-llQ">
-                                    <font key="font" metaFont="menuBar"/>
+                                    <font key="font" metaFont="menu" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -920,7 +921,7 @@ Have a nice day.</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
-                                <rect key="frame" x="515" y="562" width="82" height="16"/>
+                                <rect key="frame" x="515" y="561" width="82" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Model name:" id="8cl-ee-SUv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -928,7 +929,7 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
-                                <rect key="frame" x="605" y="558" width="120" height="24"/>
+                                <rect key="frame" x="605" y="557" width="120" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="m89-zU-OEZ"/>
                                     <constraint firstAttribute="height" constant="24" id="vhQ-76-C9R"/>
@@ -939,9 +940,18 @@ Have a nice day.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
+                                <rect key="frame" x="6" y="560" width="224" height="18"/>
+                                <buttonCell key="cell" type="check" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="qZ1-QU-Zfb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="55" id="4XS-OO-ad2"/>
+                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="leading" secondItem="zho-7K-Ra7" secondAttribute="leading" id="8f2-Ha-bD3"/>
+                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="centerY" secondItem="bfh-Pk-AUc" secondAttribute="centerY" id="Bwk-e2-Ura"/>
                             <constraint firstAttribute="bottom" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" constant="40" id="Cux-Jb-R6L"/>
                             <constraint firstItem="N6e-ay-pMo" firstAttribute="centerY" secondItem="N2a-xj-83m" secondAttribute="centerY" id="ERi-sn-aPL"/>
                             <constraint firstItem="qZ1-QU-Zfb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="G3g-Xl-Wnt"/>
@@ -966,6 +976,7 @@ Have a nice day.</string>
                     </view>
                     <connections>
                         <outlet property="inputTv" destination="zho-7K-Ra7" id="gXQ-gH-mto"/>
+                        <outlet property="kotlinBtn" destination="0f0-Ir-Lb0" id="zA7-Ur-U2Q"/>
                         <outlet property="nameTf" destination="Zzl-sD-jgF" id="h06-jp-jMB"/>
                         <outlet property="outputTv" destination="OBJ-FX-YAv" id="OmI-vh-95q"/>
                         <outlet property="resultLb" destination="N6e-ay-pMo" id="cDS-EG-Pkq"/>

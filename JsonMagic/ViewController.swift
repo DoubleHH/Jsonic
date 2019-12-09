@@ -13,15 +13,37 @@ class ViewController: NSViewController {
     @IBOutlet var outputTv: NSTextView!
     @IBOutlet weak var resultLb: NSTextField!
     @IBOutlet weak var nameTf: NSTextField!
+    @IBOutlet weak var kotlinBtn: NSButton!
     private var jsonic: Jsonic!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         jsonic = Jsonic.init(delegate: self)
-        Swifty.findResult()
     }
 
     @IBAction func run(_ sender: NSButton) {
+        if kotlinBtn.state == .on {
+            doSwifty()
+        } else {
+            doJsonic()
+        }
+    }
+    
+    private func doSwifty() {
+        guard let text = inputTv.textStorage?.string, text.count > 0 else {
+            showResult(success: false, errorInfo: "Hey man, input your Kotlin model text~")
+            return
+        }
+        let result = Swifty.modelFromKotlin(text: text)
+        outputTv.string = result
+        if result.isEmpty {
+            showResult(success: false, errorInfo: "Error: transfer to swift failed")
+        } else {
+            showResult(success: true)
+        }
+    }
+    
+    private func doJsonic() {
         guard nameTf.stringValue.count > 0 else {
             showResult(success: false, errorInfo: "Hey man, input your model name~")
             return

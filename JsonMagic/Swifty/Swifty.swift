@@ -9,35 +9,78 @@
 import Foundation
 
 struct Swifty {
-    enum Process {
-        case none, start, ing, end
-    }
     
     private static let DATA_STARTS = "data class"
-    private static let MODEL_PATTERN = "\\w*Model"
-    private static let PROPERTY_NAME_PATTERN = "\"\\w*\"" //\w*\?
-    private static let PROPERTY_TYPE_PATTERN = "\\w*\\?"
+    private static let PROPERTY_STARTS = "@SerializedName("
     
-    static func modelFromKotlin(text: String) {
-        let lines = text.split(separator: "\n")
-        var process: Process = .none
+    private static let MODEL_PATTERN = "data\\s*class\\s*\\w*Model"
+    private static let CONCRETE_MODEL_PATTERN = "\\w*Model"
+    private static let PROPERTY_NAME_PATTERN = "\"\\w*\""
+    private static let PROPERTY_TYPE_PATTERN = "val\\s*\\w*\\s*:\\s*[\\w,<,>]*"
+    
+    static func modelFromKotlin(text: String) -> String {
+        let lines = preprocessText(text: text).split(separator: ",")
+        var isProcessing: Bool = false
+        var result = ""
         for line in lines {
             let item = line.trimmingCharacters(in: .whitespacesAndNewlines)
             if item.isEmpty { continue }
-            switch process {
-            case .none:
-                if item.starts(with: DATA_STARTS), let model = NSRegularExpression.matches(regex: MODEL_PATTERN, validateString: item).first {
-                    process = .start
-                    print("class \(model): Codable {\n")
+            
+            if !isProcessing {
+                if let modelName = modelName(line: item) {
+                    isProcessing = true
+                    result += "class \(modelName): Codable {\n"
+                    result += dealPropertyLine(line: item)
+                    
+                    if checkModelEnd(line: item) {
+                        isProcessing = false
+                        result += "}\n\n"
+                    }
                 }
-            case .start:
-                break
-            case .ing:
-                <#code#>
-            case .end:
-                <#code#>
+            } else {
+                result += dealPropertyLine(line: item)
+                
+                if checkModelEnd(line: item) {
+                    isProcessing = false
+                    result += "}\n\n"
+                }
+                
+                // maybe has model
+                if let modelName = modelName(line: item) {
+                    isProcessing = true
+                    result += "class \(modelName): Codable {\n"
+                    
+                    let arr = item.components(separatedBy: modelName)
+                    if let last = arr.last {
+                        result += dealPropertyLine(line: last)
+                    }
+                }
             }
         }
+        return result
+    }
+    
+    private static func checkModelEnd(line: String) -> Bool {
+        return line.hasSuffix(")") || line.contains("{")
+    }
+    
+    private static func modelName(line: String) -> String? {
+        guard let modelName = NSRegularExpression.matches(regex: MODEL_PATTERN, validateString: line).first else { return nil }
+        return NSRegularExpression.matches(regex: CONCRETE_MODEL_PATTERN, validateString: modelName).first
+    }
+    
+    private static func dealPropertyLine(line: String) -> String {
+        guard let propertyName = NSRegularExpression.matches(regex: PROPERTY_NAME_PATTERN, validateString: line).first,
+            let propertyType = NSRegularExpression.matches(regex: PROPERTY_TYPE_PATTERN, validateString: line).first?.trimmingCharacters(in: .whitespacesAndNewlines),
+            let ptype = propertyType.split(separator: ":").last else { return "" }
+        let pname = propertyName.replacingOccurrences(of: "\"", with: "").trimmingCharacters(in: .whitespaces)
+        let type = ptype.replacingOccurrences(of: "ArrayList", with: "Array").trimmingCharacters(in: .whitespaces)
+        return "    var \(pname): \(type)?\n"
+    }
+    
+    
+    private static func preprocessText(text: String) -> String {
+        return text.replacingOccurrences(of: "\n", with: "")
     }
     
     static func findResult() {
