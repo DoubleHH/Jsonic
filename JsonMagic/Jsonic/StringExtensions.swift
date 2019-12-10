@@ -27,7 +27,7 @@ extension String.SubSequence {
         return partly(from: 0, to: to)
     }
     
-    private func partly(from: Int, to: Int) -> String? {
+    public func partly(from: Int, to: Int) -> String? {
         guard from >= 0, to <= self.count, from < to else { return nil }
         let fromIndex = self.index(self.startIndex, offsetBy: from)
         let toIndex = self.index(self.startIndex, offsetBy: to)
@@ -56,7 +56,7 @@ extension String {
         return partly(from: 0, to: to)
     }
     
-    private func partly(from: Int, to: Int) -> String? {
+    public func partly(from: Int, to: Int) -> String? {
         guard from >= 0, to <= self.count, from < to else { return nil }
         let fromIndex = self.index(self.startIndex, offsetBy: from)
         let toIndex = self.index(self.startIndex, offsetBy: to)

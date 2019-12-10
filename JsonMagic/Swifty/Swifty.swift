@@ -9,17 +9,22 @@
 import Foundation
 
 struct Swifty {
-    
-    private static let DATA_STARTS = "data class"
-    private static let PROPERTY_STARTS = "@SerializedName("
-    
-    private static let MODEL_PATTERN = "data\\s*class\\s*\\w*Model"
+    private static let MODEL_PATTERN = "data\\s+class\\s+\\w+"
     private static let CONCRETE_MODEL_PATTERN = "\\w*Model"
     private static let PROPERTY_NAME_PATTERN = "\"\\w*\""
-    private static let PROPERTY_TYPE_PATTERN = "val\\s*\\w*\\s*:\\s*[\\w,<,>]*"
+    private static let PROPERTY_TYPE_PATTERN = "va[rl]\\s+\\w+\\s*:\\s*[\\w,<,>]+"
     
     static func modelFromKotlin(text: String) -> String {
-        let lines = preprocessText(text: text).split(separator: ",")
+        var result = ""
+        let models = splitToMultiModels(text: preprocessText(text: text))
+        for modelText in models {
+            result += processSingleModel(text: modelText)
+        }
+        return result
+    }
+    
+    private static func processSingleModel(text: String) -> String {
+        let lines = text.split(separator: ",")
         var isProcessing: Bool = false
         var result = ""
         for line in lines {
@@ -31,30 +36,13 @@ struct Swifty {
                     isProcessing = true
                     result += "class \(modelName): Codable {\n"
                     result += dealPropertyLine(line: item)
-                    
-                    if checkModelEnd(line: item) {
-                        isProcessing = false
-                        result += "}\n\n"
-                    }
                 }
             } else {
                 result += dealPropertyLine(line: item)
-                
-                if checkModelEnd(line: item) {
-                    isProcessing = false
-                    result += "}\n\n"
-                }
-                
-                // maybe has model
-                if let modelName = modelName(line: item) {
-                    isProcessing = true
-                    result += "class \(modelName): Codable {\n"
-                    
-                    let arr = item.components(separatedBy: modelName)
-                    if let last = arr.last {
-                        result += dealPropertyLine(line: last)
-                    }
-                }
+            }
+            if isProcessing && checkModelEnd(line: item) {
+                isProcessing = false
+                result += "}\n\n"
             }
         }
         return result
@@ -64,18 +52,51 @@ struct Swifty {
         return line.hasSuffix(")") || line.contains("{")
     }
     
+    private static func splitToMultiModels(text: String) -> [String] {
+        do {
+            let regex: NSRegularExpression = try NSRegularExpression(pattern: MODEL_PATTERN, options: [])
+            let matches = regex.matches(in: text, options: [], range: NSMakeRange(0, text.count))
+            if matches.count <= 1 {
+                return [text]
+            }
+            var result: [String] = []
+            var start = matches[0].range.location
+            for index in 1..<matches.count {
+                let item = matches[index]
+                let end = item.range.location
+                if let string = text.partly(from: start, to: end) {
+                    result.append(string)
+                }
+                start = end
+            }
+            if let string = text.partly(from: start, to: text.count) {
+                result.append(string)
+            }
+            return result
+        } catch  {
+            return [text]
+        }
+    }
+    
     private static func modelName(line: String) -> String? {
         guard let modelName = NSRegularExpression.matches(regex: MODEL_PATTERN, validateString: line).first else { return nil }
         return NSRegularExpression.matches(regex: CONCRETE_MODEL_PATTERN, validateString: modelName).first
     }
     
     private static func dealPropertyLine(line: String) -> String {
-        guard let propertyName = NSRegularExpression.matches(regex: PROPERTY_NAME_PATTERN, validateString: line).first,
-            let propertyType = NSRegularExpression.matches(regex: PROPERTY_TYPE_PATTERN, validateString: line).first?.trimmingCharacters(in: .whitespacesAndNewlines),
-            let ptype = propertyType.split(separator: ":").last else { return "" }
-        let pname = propertyName.replacingOccurrences(of: "\"", with: "").trimmingCharacters(in: .whitespaces)
+        guard let propertyType = NSRegularExpression.matches(regex: PROPERTY_TYPE_PATTERN, validateString: line).first?.trimmingCharacters(in: .whitespacesAndNewlines),
+        let ptype = propertyType.split(separator: ":").last else { return "" }
+        
+        var pname: String? = nil
+        let propertyName = NSRegularExpression.matches(regex: PROPERTY_NAME_PATTERN, validateString: line).first
+        if let tempPname = propertyName {
+            pname = tempPname.replacingOccurrences(of: "\"", with: "").trimmingCharacters(in: .whitespaces)
+        } else {
+            pname = propertyType.split(separator: " ")[1].trimmingCharacters(in: .init(charactersIn: ":"))
+        }
+        
         let type = ptype.replacingOccurrences(of: "ArrayList", with: "Array").trimmingCharacters(in: .whitespaces)
-        return "    var \(pname): \(type)?\n"
+        return "    var \(pname ?? ""): \(type)?\n"
     }
     
     
