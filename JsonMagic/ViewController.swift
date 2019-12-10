@@ -32,13 +32,13 @@ class ViewController: NSViewController {
     @discardableResult
     private func doSwifty() -> Bool {
         guard let text = inputTv.textStorage?.string, text.count > 0 else {
-            showResult(success: false, errorInfo: "Hey man, input your Kotlin model text~")
+            showResult(success: false, info: "Hey man, input your Kotlin model text~")
             return false
         }
         let result = Swifty.modelFromKotlin(text: text)
         outputTv.string = result
         if result.isEmpty {
-            showResult(success: false, errorInfo: "Error: transfer to swift failed")
+            showResult(success: false, info: "Error: transfer to swift failed")
             return false
         } else {
             showResult(success: true)
@@ -48,11 +48,11 @@ class ViewController: NSViewController {
     
     private func doJsonic() {
         guard nameTf.stringValue.count > 0 else {
-            showResult(success: false, errorInfo: "Hey man, input your model name~")
+            showResult(success: false, info: "Hey man, input your model name~")
             return
         }
         guard let text = inputTv.textStorage?.string, text.count > 0 else {
-            showResult(success: false, errorInfo: "Hey man, input your json text~")
+            showResult(success: false, info: "Hey man, input your json text~")
             return
         }
         jsonic.beginParse(text: text, modelName: nameTf.stringValue)
@@ -62,19 +62,21 @@ class ViewController: NSViewController {
         if kotlinBtn.state == .on {
             if doSwifty() {
                 FileUtil.saveToDisk(fileName: "export.swift", content: outputTv.string)
+                showResult(success: true, info: " Swift file is exported into the folder which path is Desktop/models/ ")
             }
         } else {
             guard let content = jsonic.fullModelContext, let fileName = jsonic.swiftFileName() else {
-                showResult(success: false, errorInfo: "Hey man, file content is nil~")
+                showResult(success: false, info: "Hey man, file content is nil~")
                 return
             }
             FileUtil.saveToDisk(fileName: fileName, content: content)
+            showResult(success: true, info: " Swift file is exported into the folder which path is Desktop/models/ ")
         }
     }
     
-    private func showResult(success: Bool, errorInfo: String = "") {
+    private func showResult(success: Bool, info: String = "") {
         resultLb.textColor = success ? .cyan : .red
-        resultLb.stringValue = success ? "Success ^_^" : "Error: \(errorInfo)"
+        resultLb.stringValue = success ? "Success ^_^  \(info)" : "Error: \(info)"
     }
 }
 
@@ -84,7 +86,7 @@ extension ViewController: JsonicDelegate {
         if success {
             outputTv.string = jsonic.modelText
         }
-        showResult(success: success, errorInfo: "Error: \(error.description)")
+        showResult(success: success, info: "Error: \(error.description)")
     }
     
     func jsonicPreprocessJson(json: [String : Any]) -> [String : Any] {
