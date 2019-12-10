@@ -29,17 +29,20 @@ class ViewController: NSViewController {
         }
     }
     
-    private func doSwifty() {
+    @discardableResult
+    private func doSwifty() -> Bool {
         guard let text = inputTv.textStorage?.string, text.count > 0 else {
             showResult(success: false, errorInfo: "Hey man, input your Kotlin model text~")
-            return
+            return false
         }
         let result = Swifty.modelFromKotlin(text: text)
         outputTv.string = result
         if result.isEmpty {
             showResult(success: false, errorInfo: "Error: transfer to swift failed")
+            return false
         } else {
             showResult(success: true)
+            return true
         }
     }
     
@@ -56,11 +59,17 @@ class ViewController: NSViewController {
     }
     
     @IBAction func exportModel(_ sender: Any) {
-        guard let content = jsonic.fullModelContext, let fileName = jsonic.swiftFileName() else {
-            showResult(success: false, errorInfo: "Hey man, file content is nil~")
-            return
+        if kotlinBtn.state == .on {
+            if doSwifty() {
+                FileUtil.saveToDisk(fileName: "export.swift", content: outputTv.string)
+            }
+        } else {
+            guard let content = jsonic.fullModelContext, let fileName = jsonic.swiftFileName() else {
+                showResult(success: false, errorInfo: "Hey man, file content is nil~")
+                return
+            }
+            FileUtil.saveToDisk(fileName: fileName, content: content)
         }
-        FileUtil.saveToDisk(fileName: fileName, content: content)
     }
     
     private func showResult(success: Bool, errorInfo: String = "") {
