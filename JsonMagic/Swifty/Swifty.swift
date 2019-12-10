@@ -103,12 +103,6 @@ struct Swifty {
     private static func preprocessText(text: String) -> String {
         return text.replacingOccurrences(of: "\n", with: "")
     }
-    
-    static func findResult() {
-        let text = "@SerializedName(\"station_id\") val stationId: String? = null,"
-        let pattern = ""
-        print(NSRegularExpression.matches(regex: pattern, validateString: text))
-    }
 }
 
 extension NSRegularExpression {
