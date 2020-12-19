@@ -91,3 +91,21 @@ extension String.SubSequence {
         return partly(to: 1)?.capitalized.appending(partly(from: 1) ?? "") ?? ""
     }
 }
+
+extension String.SubSequence {
+    /// the string removed note
+    var removedNote: (result: Self, changed: Bool) {
+        let reg = "//.*"
+        let res = self.range(of: reg, options: .regularExpression, range: self.startIndex ..< self.endIndex, locale: Locale.current)
+        guard let range = res else {
+            return (result: self, false)
+        }
+        let prefix = self[startIndex..<range.lowerBound]
+        let prefixCount = prefix.filter( { $0 == "\"" }).count
+        let suffixCount = self[range].filter( { $0 == "\"" }).count
+        if (suffixCount % 2) == 1 && (prefixCount % 2) == 1 {
+            return (result: self, false)
+        }
+        return (result: prefix, true)
+    }
+}

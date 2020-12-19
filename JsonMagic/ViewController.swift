@@ -53,11 +53,6 @@ class ViewController: NSViewController {
     }
 
     @IBAction func run(_ sender: NSButton) {
-        if kotlinBtn.state == .on {
-            doSwifty()
-        } else {
-            doJsonic()
-        }
         switch transferType {
         case .jsonToSwift:
             doJsonic()
@@ -137,8 +132,8 @@ class ViewController: NSViewController {
     }
     
     private func showResult(success: Bool, info: String = "") {
-        resultLb.textColor = success ? .cyan : .red
-        resultLb.stringValue = success ? "Success ^_^  \(info)" : "Error: \(info)"
+        resultLb.textColor = success ? .systemGreen : .red
+        resultLb.stringValue = success ? "Congratulations~ Transfer Success ^_^  \(info)" : "Error: \(info)"
     }
 }
 

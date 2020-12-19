@@ -15,7 +15,7 @@ public protocol JsonicDelegate: NSObjectProtocol {
     func jsonicPreprocessJsonBeforeTransfer(json: [String: Any]) -> [String: Any]
 }
 
-public class Jsonic: NSObject {
+public class Jsonic: NSObject, Logable {
     public enum JsonicError: Error, CustomStringConvertible {
         case none
         case invalidateText
@@ -99,6 +99,17 @@ public class Jsonic: NSObject {
     private var modelName: String = ""
     private var objectDefines: [DataType] = []
     private weak var delegate: JsonicDelegate?
+    internal var logContent: [String] = []
+    
+    internal func log(_ content: String) {
+        print(content)
+        logContent.append(content)
+    }
+    
+    /// transfer log info
+    var logInfo: String {
+        return logContent.joined(separator: "\n")
+    }
     
     public func modelText(outputType: OutputType) -> String {
         return objectDefines.modelTextForPrint(outputType: outputType)
@@ -129,23 +140,46 @@ public class Jsonic: NSObject {
         self.delegate = delegate
     }
     
-    func beginParse(text: String, modelName: String) {
-        self.text = text
-        self.modelName = modelName
-        objectDefines.removeAll()
-        
+    private func tryJsonObject(text: String) -> (jsonObj: Any?, error: Jsonic.JsonicError?) {
         guard let data = text.data(using: .utf8) else {
-            delegate?.jsonicDidFinished(success: false, error: .invalidateText)
-            return
+            return (jsonObj: nil, error: .invalidateText)
         }
         var jsonObj: Any? = nil
         do {
             jsonObj = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
         } catch let e {
-            print(e)
-            delegate?.jsonicDidFinished(success: false, error: .jsonError(e: e))
-            return
+            log("JSONSerialization error: \(e)")
+            return (jsonObj: nil, error: .jsonError(e: e))
         }
+        return (jsonObj: jsonObj, error: nil)
+    }
+    
+    func beginParse(text: String, modelName: String) {
+        self.text = text
+        self.modelName = modelName
+        objectDefines.removeAll()
+        logContent.removeAll()
+        
+        var jsonObj: Any? = nil
+        let originResult = tryJsonObject(text: text)
+        if originResult.jsonObj == nil {
+            let dealTextResult = cleanText(text: text)
+            if !dealTextResult.changed {
+                log("No need to remove note")
+                delegate?.jsonicDidFinished(success: false, error: originResult.error!)
+                return
+            }
+            log("The text that removed note ============= :\n\(dealTextResult.result)")
+            let cleanResult = tryJsonObject(text: dealTextResult.result)
+            if cleanResult.jsonObj == nil {
+                delegate?.jsonicDidFinished(success: false, error: originResult.error!)
+                return
+            }
+            jsonObj = cleanResult.jsonObj
+        } else {
+            jsonObj = originResult.jsonObj
+        }
+        
         guard var json = jsonObj as? [String: Any] else {
             delegate?.jsonicDidFinished(success: false, error: .notDictionary)
             return
@@ -208,6 +242,16 @@ public class Jsonic: NSObject {
     public func fileName(outputType: OutputType) -> String? {
         guard let last = objectDefines.last, case let Jsonic.DataType.object(name, _) = last else { return nil }
         return name + "." + outputType.fileType()
+    }
+    
+    private func cleanText(text: String) -> (result: String, changed: Bool) {
+        let lines = text.split(separator: "\n")
+        guard lines.count > 0 else { return (result: text, changed: false) }
+        let lineRemoveList = lines.map({ $0.removedNote })
+        if lineRemoveList.first(where: { $0.changed }) == nil {
+            return (result: text, changed: false)
+        }
+        return (result: lineRemoveList.map( { $0.result } ).joined(separator: "\n"), changed: true)
     }
 }
 
