@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -708,21 +708,21 @@
             <objects>
                 <viewController title="Jsonic" id="XfG-lQ-9wD" customClass="ViewController" customModule="JsonMagic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="689"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ1-QU-Zfb">
-                                <rect key="frame" x="8" y="40" width="500" height="505"/>
+                                <rect key="frame" x="18" y="40" width="470" height="549"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Izu-cA-AFo">
-                                    <rect key="frame" x="1" y="1" width="498" height="503"/>
+                                    <rect key="frame" x="1" y="1" width="468" height="547"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7" customClass="PlainTextView" customModule="JsonMagic" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="2" width="498" height="652"/>
+                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7">
+                                            <rect key="frame" x="0.0" y="3" width="468" height="635"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="498" height="503"/>
+                                            <size key="minSize" width="468" height="547"/>
                                             <size key="maxSize" width="965" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -743,6 +743,7 @@
 				"code": "84894743i9484",
 				"receiver_name": "</mutableString>
                                                     <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="13" name="Monaco"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -750,6 +751,7 @@
                                                 </fragment>
                                                 <fragment content="王刚">
                                                     <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="13" name="PingFangSC-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -760,41 +762,15 @@
 				"receiver_phone": "15099997777",
 				"receiver_address": "</string>
                                                     <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="13" name="Monaco"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
-                                                <fragment content="北京市海淀区学清路学清嘉创大厦学清嘉创大厦">
+                                                <fragment content="北京市海淀区学清路">
                                                     <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="13" name="PingFangSC-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="14">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="13" name="Monaco"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="层">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="13" name="PingFangSC-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="501b">
-                                                    <attributes>
-                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <font key="NSFont" size="13" name="Monaco"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="门">
-                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="13" name="PingFangSC-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -820,11 +796,20 @@
 		}
 	],
 	"city_code": "010"
-}</mutableString>
+</mutableString>
                                                     <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="13" name="Monaco"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                                <fragment content="}">
+                                                    <attributes>
+                                                        <color key="NSBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <font key="NSFont" size="13" name="Monaco"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -838,22 +823,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="iC8-4s-0og">
-                                    <rect key="frame" x="483" y="1" width="16" height="503"/>
+                                    <rect key="frame" x="453" y="1" width="16" height="547"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3T-WP-q05">
-                                <rect key="frame" x="516" y="40" width="476" height="502"/>
+                                <rect key="frame" x="548" y="40" width="434" height="545"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Zh8-JC-lo2">
-                                    <rect key="frame" x="1" y="1" width="474" height="500"/>
+                                    <rect key="frame" x="1" y="1" width="432" height="543"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv" customClass="PlainTextView" customModule="JsonMagic" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="474" height="500"/>
+                                        <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv">
+                                            <rect key="frame" x="0.0" y="0.0" width="432" height="543"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="474" height="500"/>
+                                            <size key="minSize" width="432" height="543"/>
                                             <size key="maxSize" width="942" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -861,13 +846,14 @@
 
 Have a nice day.</string>
                                                     <attributes>
+                                                        <color key="NSBackgroundColor" red="0.66666666666666663" green="0.47450980392156861" blue="0.25882352941176467" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <font key="NSFont" size="14" name="Monaco"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
-                                            <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="insertionPointColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </textView>
                                     </subviews>
                                 </clipView>
@@ -876,12 +862,12 @@ Have a nice day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="80b-vJ-Uw4">
-                                    <rect key="frame" x="459" y="1" width="16" height="500"/>
+                                    <rect key="frame" x="417" y="1" width="16" height="543"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-IB-u9G">
-                                <rect key="frame" x="922" y="555" width="69" height="28"/>
+                                <rect key="frame" x="912" y="598" width="69" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
                                     <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
@@ -911,7 +897,7 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="00d-k9-o5f">
-                                <rect key="frame" x="887" y="7" width="104" height="24"/>
+                                <rect key="frame" x="887" y="7" width="104" height="22"/>
                                 <buttonCell key="cell" type="square" title="导出Model文件" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ghP-Vr-3Mk">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -921,7 +907,7 @@ Have a nice day.</string>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
-                                <rect key="frame" x="515" y="561" width="82" height="16"/>
+                                <rect key="frame" x="547" y="604" width="82" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Model name:" id="8cl-ee-SUv">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -929,7 +915,7 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
-                                <rect key="frame" x="605" y="557" width="120" height="24"/>
+                                <rect key="frame" x="637" y="600" width="120" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="m89-zU-OEZ"/>
                                     <constraint firstAttribute="height" constant="24" id="vhQ-76-C9R"/>
@@ -940,42 +926,81 @@ Have a nice day.</string>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
-                                <rect key="frame" x="6" y="560" width="224" height="18"/>
-                                <buttonCell key="cell" type="check" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
+                                <rect key="frame" x="17" y="603" width="228" height="18"/>
+                                <buttonCell key="cell" type="radio" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="uuD-hs-w1S"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-hk-rSS">
+                                <rect key="frame" x="17" y="632" width="150" height="18"/>
+                                <buttonCell key="cell" type="radio" title="Json to Kotlin Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="2Sg-03-hnA">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="iNd-FP-hr5"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-kC-jjw">
+                                <rect key="frame" x="503" y="302" width="31" height="26"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="=&gt;" id="VjU-qs-QjW">
+                                    <font key="font" metaFont="system" size="22"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
+                                <rect key="frame" x="17" y="660" width="146" height="18"/>
+                                <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="jGm-98-GUD"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="55" id="4XS-OO-ad2"/>
+                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="top" secondItem="nlc-hk-rSS" secondAttribute="bottom" constant="13" id="0Q3-iI-RFK"/>
+                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="100" id="4XS-OO-ad2"/>
                             <constraint firstItem="0f0-Ir-Lb0" firstAttribute="leading" secondItem="zho-7K-Ra7" secondAttribute="leading" id="8f2-Ha-bD3"/>
                             <constraint firstItem="0f0-Ir-Lb0" firstAttribute="centerY" secondItem="bfh-Pk-AUc" secondAttribute="centerY" id="Bwk-e2-Ura"/>
                             <constraint firstAttribute="bottom" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" constant="40" id="Cux-Jb-R6L"/>
                             <constraint firstItem="N6e-ay-pMo" firstAttribute="centerY" secondItem="N2a-xj-83m" secondAttribute="centerY" id="ERi-sn-aPL"/>
-                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="G3g-Xl-Wnt"/>
-                            <constraint firstAttribute="trailing" secondItem="w3T-WP-q05" secondAttribute="trailing" constant="8" id="IBa-pP-K8w"/>
+                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="18" id="G3g-Xl-Wnt"/>
+                            <constraint firstAttribute="trailing" secondItem="w3T-WP-q05" secondAttribute="trailing" constant="18" id="IBa-pP-K8w"/>
                             <constraint firstItem="bfh-Pk-AUc" firstAttribute="leading" secondItem="OBJ-FX-YAv" secondAttribute="leading" id="Ix3-hs-AMs"/>
                             <constraint firstAttribute="trailing" secondItem="00d-k9-o5f" secondAttribute="trailing" constant="9" id="JqL-wj-lvE"/>
-                            <constraint firstItem="w3T-WP-q05" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="8" id="LFt-AF-n03"/>
-                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" id="M28-d0-daA"/>
+                            <constraint firstItem="w3T-WP-q05" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="60" id="LFt-AF-n03"/>
+                            <constraint firstItem="nlc-hk-rSS" firstAttribute="leading" secondItem="0f0-Ir-Lb0" secondAttribute="leading" id="LOF-RA-WG8"/>
+                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" constant="-30" id="M28-d0-daA"/>
                             <constraint firstAttribute="bottom" secondItem="00d-k9-o5f" secondAttribute="bottom" constant="7" id="ONh-sn-7Xt"/>
                             <constraint firstItem="ibE-IB-u9G" firstAttribute="trailing" secondItem="OBJ-FX-YAv" secondAttribute="trailing" id="VZA-97-a9i"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="W8Y-mN-WFm"/>
+                            <constraint firstItem="nlc-hk-rSS" firstAttribute="top" secondItem="94G-8M-f0P" secondAttribute="bottom" constant="12" id="X2f-S5-ehZ"/>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="top" secondItem="zho-7K-Ra7" secondAttribute="top" id="Zba-e3-bEl"/>
+                            <constraint firstItem="EcS-kC-jjw" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="17" id="Zcc-bE-xGl"/>
                             <constraint firstItem="Zzl-sD-jgF" firstAttribute="centerY" secondItem="bfh-Pk-AUc" secondAttribute="centerY" id="c8j-y6-DKe"/>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="bottom" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" id="cu0-KW-TdE"/>
+                            <constraint firstItem="EcS-kC-jjw" firstAttribute="centerY" secondItem="qZ1-QU-Zfb" secondAttribute="centerY" id="gBc-DN-SgO"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="top" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" constant="12" id="hKK-uu-pKR"/>
                             <constraint firstItem="00d-k9-o5f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N6e-ay-pMo" secondAttribute="trailing" constant="15" id="iaO-zM-TF9"/>
                             <constraint firstItem="N6e-ay-pMo" firstAttribute="leading" secondItem="N2a-xj-83m" secondAttribute="trailing" constant="17" id="n8u-RH-9vb"/>
                             <constraint firstItem="OBJ-FX-YAv" firstAttribute="top" secondItem="ibE-IB-u9G" secondAttribute="bottom" constant="14" id="o3U-94-a2g"/>
                             <constraint firstItem="Zzl-sD-jgF" firstAttribute="leading" secondItem="bfh-Pk-AUc" secondAttribute="trailing" constant="10" id="v4B-GL-B2M"/>
                             <constraint firstItem="bfh-Pk-AUc" firstAttribute="centerY" secondItem="ibE-IB-u9G" secondAttribute="centerY" id="wkx-b1-YQ6"/>
+                            <constraint firstItem="94G-8M-f0P" firstAttribute="leading" secondItem="nlc-hk-rSS" secondAttribute="leading" id="xZa-2C-eed"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="inputTv" destination="zho-7K-Ra7" id="gXQ-gH-mto"/>
+                        <outlet property="jsonToKotlinBtn" destination="nlc-hk-rSS" id="VUJ-si-Nzm"/>
+                        <outlet property="jsonToSwiftBtn" destination="94G-8M-f0P" id="vc1-wb-Ixc"/>
                         <outlet property="kotlinBtn" destination="0f0-Ir-Lb0" id="zA7-Ur-U2Q"/>
                         <outlet property="nameTf" destination="Zzl-sD-jgF" id="h06-jp-jMB"/>
                         <outlet property="outputTv" destination="OBJ-FX-YAv" id="OmI-vh-95q"/>
@@ -984,7 +1009,7 @@ Have a nice day.</string>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="94" y="1055"/>
+            <point key="canvasLocation" x="94" y="1099.5"/>
         </scene>
     </scenes>
 </document>

@@ -77,3 +77,17 @@ extension String {
         return nsRange(from: range)
     }
 }
+
+extension String {
+    var pureCapitalized: String {
+        guard count > 0 else { return "" }
+        return partly(to: 1)?.capitalized.appending(partly(from: 1) ?? "") ?? ""
+    }
+}
+
+extension String.SubSequence {
+    var pureCapitalized: String {
+        guard count > 0 else { return "" }
+        return partly(to: 1)?.capitalized.appending(partly(from: 1) ?? "") ?? ""
+    }
+}

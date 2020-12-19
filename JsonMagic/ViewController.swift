@@ -8,17 +8,48 @@
 
 import Cocoa
 
+extension ViewController: NSTextViewDelegate {
+    func textDidChange(_ notification: Notification) {
+        [inputTv, outputTv].forEach { tv in
+            updateTextViewAttrs(tv: tv)
+        }
+    }
+    
+    private func updateTextViewAttrs(tv: NSTextView) {
+        tv.textColor = NSColor.textColor
+        tv.font = NSFont.init(name: "Monaco", size: 13)
+    }
+}
+
 class ViewController: NSViewController {
+    enum TransferType {
+        case jsonToSwift, jsonToKotlin, kotlinToSwift
+    }
+    
     @IBOutlet var inputTv: NSTextView!
     @IBOutlet var outputTv: NSTextView!
     @IBOutlet weak var resultLb: NSTextField!
     @IBOutlet weak var nameTf: NSTextField!
     @IBOutlet weak var kotlinBtn: NSButton!
+    @IBOutlet weak var jsonToSwiftBtn: NSButton!
+    @IBOutlet weak var jsonToKotlinBtn: NSButton!
     private var jsonic: Jsonic!
+    private var transferType = TransferType.jsonToSwift
+    private var outputType: Jsonic.OutputType {
+        switch transferType {
+        case .jsonToKotlin:
+            return .kotlin
+        default:
+            return .swift
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         jsonic = Jsonic.init(delegate: self)
+        inputTv.delegate = self
+        outputTv.delegate = self
+        updateTransferType()
     }
 
     @IBAction func run(_ sender: NSButton) {
@@ -26,6 +57,37 @@ class ViewController: NSViewController {
             doSwifty()
         } else {
             doJsonic()
+        }
+        switch transferType {
+        case .jsonToSwift:
+            doJsonic()
+        case .jsonToKotlin:
+            print("")
+        case .kotlinToSwift:
+            doSwifty()
+        }
+    }
+    
+    @IBAction func radioClicked(_ sender: NSObject) {
+        if kotlinBtn == sender {
+            transferType = TransferType.kotlinToSwift
+        } else if jsonToSwiftBtn == sender {
+            transferType = TransferType.jsonToSwift
+        } else if jsonToKotlinBtn == sender {
+            transferType = TransferType.jsonToKotlin
+        }
+        updateTransferType()
+    }
+    
+    private func updateTransferType() {
+        [jsonToKotlinBtn, jsonToSwiftBtn, kotlinBtn].forEach({ $0?.state = .off })
+        switch transferType {
+        case .jsonToSwift:
+            jsonToSwiftBtn.state = .on
+        case .jsonToKotlin:
+            jsonToKotlinBtn.state = .on
+        case .kotlinToSwift:
+            kotlinBtn.state = .on
         }
     }
     
@@ -65,7 +127,7 @@ class ViewController: NSViewController {
                 showResult(success: true, info: " Swift file is exported into the folder which path is Desktop/models/ ")
             }
         } else {
-            guard let content = jsonic.fullModelContext, let fileName = jsonic.swiftFileName() else {
+            guard let content = jsonic.fullModelContext(outputType: outputType), let fileName = jsonic.fileName(outputType: outputType) else {
                 showResult(success: false, info: "Hey man, file content is nil~")
                 return
             }
@@ -84,13 +146,13 @@ extension ViewController: JsonicDelegate {
     func jsonicDidFinished(success: Bool, error: Jsonic.JsonicError) {
         print(success, error)
         if success {
-            outputTv.string = jsonic.modelText
+            outputTv.string = jsonic.modelText(outputType: outputType)
         }
         showResult(success: success, info: "Error: \(error.description)")
     }
     
-    func jsonicPreprocessJson(json: [String : Any]) -> [String : Any] {
-        guard let errno = json["errno"], let errmsg = json["errmsg"] else { return json }
+    func jsonicPreprocessJsonBeforeTransfer(json: [String : Any]) -> [String : Any] {
+        guard let _ = json["errno"], let _ = json["errmsg"] else { return json }
         let maybeDataKeys: [String] = ["data", "result"]
         for key in maybeDataKeys {
             if let jsonData = json[key] as? [String: Any] { return jsonData }
