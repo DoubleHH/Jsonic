@@ -104,17 +104,24 @@ public class Jsonic: NSObject {
         return objectDefines.modelTextForPrint(outputType: outputType)
     }
     
-    public func  fullModelContext(outputType: OutputType) -> String? {
+    public func fullModelContext(outputType: OutputType) -> String? {
         guard let last = objectDefines.last, case let DataType.object(name, _) = last else { return nil }
-        let year = Calendar.current.component(.year, from: Date())
-        let content = """
-        //
-        //  \(name).swift
-        //
-        //  Copyright © \(year) Beijing SF Intra-city Technology Co., Ltd. All rights reserved.
-        //
-        """
-        return content + "\n\n\n" + objectDefines.modelTextForPrint(outputType: outputType)
+        let modelDesc = objectDefines.modelTextForPrint(outputType: outputType)
+        switch outputType {
+        case .swift:
+            let year = Calendar.current.component(.year, from: Date())
+            let content = """
+            //
+            //  \(name).swift
+            //
+            //  Copyright © \(year) Beijing SF Intra-city Technology Co., Ltd. All rights reserved.
+            //
+            """
+            return content + "\n\n\n" + modelDesc
+        case .kotlin:
+            return modelDesc
+        }
+        
     }
     
     public init(delegate: JsonicDelegate) {
@@ -171,7 +178,6 @@ public class Jsonic: NSObject {
         case is String:
             type = .string
         case is Int:
-            print(value)
             type = .int
         case is Bool:
             type = .bool

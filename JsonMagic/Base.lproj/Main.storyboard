@@ -915,9 +915,8 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
-                                <rect key="frame" x="637" y="600" width="120" height="24"/>
+                                <rect key="frame" x="637" y="600" width="255" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="m89-zU-OEZ"/>
                                     <constraint firstAttribute="height" constant="24" id="vhQ-76-C9R"/>
                                 </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="model name" drawsBackground="YES" id="lMa-a1-Q1f">
@@ -979,6 +978,7 @@ Have a nice day.</string>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="60" id="LFt-AF-n03"/>
                             <constraint firstItem="nlc-hk-rSS" firstAttribute="leading" secondItem="0f0-Ir-Lb0" secondAttribute="leading" id="LOF-RA-WG8"/>
                             <constraint firstItem="qZ1-QU-Zfb" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" constant="-30" id="M28-d0-daA"/>
+                            <constraint firstItem="ibE-IB-u9G" firstAttribute="leading" secondItem="Zzl-sD-jgF" secondAttribute="trailing" constant="20" id="Mdy-EA-w0y"/>
                             <constraint firstAttribute="bottom" secondItem="00d-k9-o5f" secondAttribute="bottom" constant="7" id="ONh-sn-7Xt"/>
                             <constraint firstItem="ibE-IB-u9G" firstAttribute="trailing" secondItem="OBJ-FX-YAv" secondAttribute="trailing" id="VZA-97-a9i"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="W8Y-mN-WFm"/>
