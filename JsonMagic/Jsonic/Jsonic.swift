@@ -15,6 +15,7 @@ public protocol JsonicDelegate: NSObjectProtocol {
     func jsonicPreprocessJsonBeforeTransfer(json: [String: Any]) -> [String: Any]
 }
 
+
 public class Jsonic: NSObject, Logable {
     public enum JsonicError: Error, CustomStringConvertible {
         case none
@@ -36,20 +37,7 @@ public class Jsonic: NSObject, Logable {
         }
     }
     
-    public enum OutputType {
-        case swift, kotlin
-        
-        func fileType() -> String {
-            switch self {
-            case .kotlin:
-                return "kt"
-            case .swift:
-                return "swift"
-            }
-        }
-    }
-    
-    fileprivate indirect enum DataType {
+    internal indirect enum DataType {
         case string, int, double, bool, unknown
         case array(itemType: DataType)
         case object(name: String, properties: [PropertyDefine])
@@ -93,7 +81,7 @@ public class Jsonic: NSObject, Logable {
         }
     }
     
-    fileprivate typealias PropertyDefine = (name: String, type: DataType)
+    internal typealias PropertyDefine = (name: String, type: DataType)
     
     private var text: String = ""
     private var modelName: String = ""
@@ -252,61 +240,5 @@ public class Jsonic: NSObject, Logable {
             return (result: text, changed: false)
         }
         return (result: lineRemoveList.map( { $0.result } ).joined(separator: "\n"), changed: true)
-    }
-}
-
-extension Array where Element == Jsonic.DataType {
-    fileprivate func modelTextForPrint(outputType: Jsonic.OutputType) -> String {
-        var text = ""
-        for item in self {
-            if let desc = modelDescription(item: item, outputType: outputType) {
-                text += desc + "\n\n"
-            }
-        }
-        return text
-    }
-    
-    private func modelDescription(item: Jsonic.DataType, outputType: Jsonic.OutputType) -> String? {
-        guard case let Jsonic.DataType.object(name, properties) = item else { return nil }
-        switch outputType {
-        case .kotlin:
-            return kotlinObjectDesc(name: name, properties: properties)
-        case .swift:
-            return swiftObjectDesc(name: name, properties: properties)
-        }
-    }
-    
-    private func swiftObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
-        var text = "class \(name): Codable {\n"
-        for property in properties {
-            text += "    var \(property.name): \(property.type.swiftDescription)?\n"
-        }
-        text += "}"
-        return text
-    }
-    
-    private func kotlinObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
-        var text = "data class \(name)(\n"
-        for (index, property) in properties.enumerated() {
-            let serializedName = property.name
-            let realName = kotlinPropertyName(name: serializedName)
-            text += "   @SerializedName(\"\(serializedName)\") val \(realName): \(property.type.kotlinDescription)? = null"
-            if index < properties.count - 1 {
-                text += ","
-            }
-            text += "\n"
-        }
-        text += ")"
-        return text
-    }
-    
-    private func kotlinPropertyName(name: String) -> String {
-        let subs = name.split(separator: "_")
-        if subs.count <= 1 {
-            return name
-        }
-        return (subs.first ?? "") + subs.suffix(from: 1).reduce("", { (res, item) -> String in
-            return res + item.capitalized
-        })
     }
 }

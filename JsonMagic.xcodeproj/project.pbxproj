@@ -17,6 +17,7 @@
 		288255CF2399197C00A1DE56 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288255CE2399197C00A1DE56 /* StringExtensions.swift */; };
 		288255D12399F79E00A1DE56 /* PlainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288255D02399F79E00A1DE56 /* PlainTextView.swift */; };
 		288255E8239A642800A1DE56 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288255E7239A642800A1DE56 /* FileUtil.swift */; };
+		28D61706258F66DB003A9021 /* OutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D61705258F66DB003A9021 /* OutputType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		288255CE2399197C00A1DE56 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		288255D02399F79E00A1DE56 /* PlainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextView.swift; sourceTree = "<group>"; };
 		288255E7239A642800A1DE56 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
+		28D61705258F66DB003A9021 /* OutputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				288255C92398EB7A00A1DE56 /* Jsonic.swift */,
 				288255CE2399197C00A1DE56 /* StringExtensions.swift */,
 				2839080B258E28B20090AFB1 /* Logable.swift */,
+				28D61705258F66DB003A9021 /* OutputType.swift */,
 			);
 			path = Jsonic;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				288255E8239A642800A1DE56 /* FileUtil.swift in Sources */,
 				288255B72398E73200A1DE56 /* AppDelegate.swift in Sources */,
 				2839080C258E28B20090AFB1 /* Logable.swift in Sources */,
+				28D61706258F66DB003A9021 /* OutputType.swift in Sources */,
 				288255D12399F79E00A1DE56 /* PlainTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

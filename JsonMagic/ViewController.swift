@@ -30,18 +30,24 @@ class ViewController: NSViewController {
     @IBOutlet var outputTv: NSTextView!
     @IBOutlet weak var resultLb: NSTextField!
     @IBOutlet weak var nameTf: NSTextField!
-    @IBOutlet weak var kotlinBtn: NSButton!
+    @IBOutlet weak var kotlinToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToKotlinBtn: NSButton!
+    @IBOutlet weak var serializedBtn: NSButton!
+    @IBOutlet weak var jsonPropertyBtn: NSButton!
     private var jsonic: Jsonic!
     private var transferType = TransferType.jsonToSwift
-    private var outputType: Jsonic.OutputType {
+    private var outputType: OutputType {
         switch transferType {
         case .jsonToKotlin:
-            return .kotlin
+            return .kotlin(config: outputKotlinConfig)
         default:
             return .swift
         }
+    }
+    private var outputKotlinConfig: OutputType.KotlinConfig {
+        return OutputType.KotlinConfig(isSerializedNameEnable: serializedBtn.state == .on,
+                                       isJsonPropertyEnable: jsonPropertyBtn.state == .on)
     }
     
     override func viewDidLoad() {
@@ -57,14 +63,14 @@ class ViewController: NSViewController {
         case .jsonToSwift:
             doJsonic()
         case .jsonToKotlin:
-            print("")
+            doJsonic()
         case .kotlinToSwift:
             doSwifty()
         }
     }
     
     @IBAction func radioClicked(_ sender: NSObject) {
-        if kotlinBtn == sender {
+        if kotlinToSwiftBtn == sender {
             transferType = TransferType.kotlinToSwift
         } else if jsonToSwiftBtn == sender {
             transferType = TransferType.jsonToSwift
@@ -74,16 +80,27 @@ class ViewController: NSViewController {
         updateTransferType()
     }
     
+    @IBAction func logClicked(_ sender: Any) {
+        let alert = NSAlert()
+        alert.informativeText = jsonic.logInfo
+        alert.messageText = "Log"
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.runModal()
+    }
+    
     private func updateTransferType() {
-        [jsonToKotlinBtn, jsonToSwiftBtn, kotlinBtn].forEach({ $0?.state = .off })
+        [jsonToKotlinBtn, jsonToSwiftBtn, kotlinToSwiftBtn].forEach({ $0?.state = .off })
         switch transferType {
         case .jsonToSwift:
             jsonToSwiftBtn.state = .on
         case .jsonToKotlin:
             jsonToKotlinBtn.state = .on
         case .kotlinToSwift:
-            kotlinBtn.state = .on
+            kotlinToSwiftBtn.state = .on
         }
+        
+        [serializedBtn, jsonPropertyBtn].forEach( { $0?.isEnabled = jsonToKotlinBtn.state == .on } )
     }
     
     @discardableResult
@@ -116,7 +133,7 @@ class ViewController: NSViewController {
     }
     
     @IBAction func exportModel(_ sender: Any) {
-        if kotlinBtn.state == .on {
+        if kotlinToSwiftBtn.state == .on {
             if doSwifty() {
                 FileUtil.saveToDisk(fileName: "export.swift", content: outputTv.string)
                 showResult(success: true, info: " Swift file is exported into the folder which path is Desktop/models/ ")
