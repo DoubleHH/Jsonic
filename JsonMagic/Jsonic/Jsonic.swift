@@ -79,12 +79,35 @@ public class Jsonic: NSObject, Logable {
                 return "List<" + itemType.kotlinDescription + ">"
             }
         }
+        
+        var javaDescription: String {
+            switch self {
+            case .string:
+                return "String"
+            case .int:
+                return "Integer"
+            case .double:
+                return "Double"
+            case .bool:
+                return "Boolean"
+            case .unknown:
+                return "String"
+            case .object(let name, _):
+                return name
+            case .array(let itemType):
+                return "List<" + itemType.kotlinDescription + ">"
+            }
+        }
     }
     
     internal typealias PropertyDefine = (name: String, type: DataType)
     
+    private static let defaultModelSuffix = "Model"
     private var text: String = ""
+    /// the top class model name
     private var modelName: String = ""
+    /// modle suffix for every class
+    var modelSuffix: String = defaultModelSuffix
     private var objectDefines: [DataType] = []
     private weak var delegate: JsonicDelegate?
     internal var logContent: [String] = []
@@ -117,7 +140,7 @@ public class Jsonic: NSObject, Logable {
             //
             """
             return content + "\n\n\n" + modelDesc
-        case .kotlin:
+        case .kotlin, .java:
             return modelDesc
         }
         
@@ -142,9 +165,14 @@ public class Jsonic: NSObject, Logable {
         return (jsonObj: jsonObj, error: nil)
     }
     
-    func beginParse(text: String, modelName: String) {
+    func beginParse(text: String, modelName: String, modelSuffix: String = defaultModelSuffix) {
         self.text = text
         self.modelName = modelName
+        if modelSuffix.isEmpty || modelSuffix == " " {
+            self.modelSuffix = Jsonic.defaultModelSuffix
+        } else {
+            self.modelSuffix = modelSuffix
+        }
         objectDefines.removeAll()
         logContent.removeAll()
         
@@ -221,7 +249,7 @@ public class Jsonic: NSObject, Logable {
     
     private func objectName(key: String, appendModelName: Bool = true) -> String {
         let trimedKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
-        let name = appendModelName ? "\(self.modelName)_\(trimedKey)_model" : "\(trimedKey)_model"
+        let name = appendModelName ? "\(self.modelName)_\(trimedKey)_\(self.modelSuffix)" : "\(trimedKey)_\(self.modelSuffix)"
         return name.split(separator: "_").reduce("") { (res, item) -> String in
             return res + item.pureCapitalized
         }

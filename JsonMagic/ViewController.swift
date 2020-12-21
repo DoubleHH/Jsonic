@@ -15,7 +15,7 @@ extension ViewController: NSTextViewDelegate {
         }
     }
     
-    private func updateTextViewAttrs(tv: NSTextView) {
+    fileprivate func updateTextViewAttrs(tv: NSTextView) {
         tv.textColor = NSColor.textColor
         tv.font = NSFont.init(name: "Monaco", size: 13)
     }
@@ -23,24 +23,29 @@ extension ViewController: NSTextViewDelegate {
 
 class ViewController: NSViewController {
     enum TransferType {
-        case jsonToSwift, jsonToKotlin, kotlinToSwift
+        case jsonToSwift, jsonToKotlin, jsonToJava, kotlinToSwift
     }
     
     @IBOutlet var inputTv: NSTextView!
     @IBOutlet var outputTv: NSTextView!
     @IBOutlet weak var resultLb: NSTextField!
+    @IBOutlet weak var modelSuffixTf: NSTextField!
     @IBOutlet weak var nameTf: NSTextField!
     @IBOutlet weak var kotlinToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToKotlinBtn: NSButton!
+    @IBOutlet weak var jsonToJavaBtn: NSButton!
     @IBOutlet weak var serializedBtn: NSButton!
     @IBOutlet weak var jsonPropertyBtn: NSButton!
+    
     private var jsonic: Jsonic!
     private var transferType = TransferType.jsonToSwift
     private var outputType: OutputType {
         switch transferType {
         case .jsonToKotlin:
             return .kotlin(config: outputKotlinConfig)
+        case .jsonToJava:
+            return .java
         default:
             return .swift
         }
@@ -60,9 +65,7 @@ class ViewController: NSViewController {
 
     @IBAction func run(_ sender: NSButton) {
         switch transferType {
-        case .jsonToSwift:
-            doJsonic()
-        case .jsonToKotlin:
+        case .jsonToSwift, .jsonToKotlin, .jsonToJava:
             doJsonic()
         case .kotlinToSwift:
             doSwifty()
@@ -74,6 +77,8 @@ class ViewController: NSViewController {
             transferType = TransferType.kotlinToSwift
         } else if jsonToSwiftBtn == sender {
             transferType = TransferType.jsonToSwift
+        } else if jsonToJavaBtn == sender {
+            transferType = TransferType.jsonToJava
         } else if jsonToKotlinBtn == sender {
             transferType = TransferType.jsonToKotlin
         }
@@ -96,11 +101,18 @@ class ViewController: NSViewController {
             jsonToSwiftBtn.state = .on
         case .jsonToKotlin:
             jsonToKotlinBtn.state = .on
+        case .jsonToJava:
+            jsonToJavaBtn.state = .on
         case .kotlinToSwift:
             kotlinToSwiftBtn.state = .on
         }
         
         [serializedBtn, jsonPropertyBtn].forEach( { $0?.isEnabled = jsonToKotlinBtn.state == .on } )
+    }
+    
+    private func updateOutputText(text: String) {
+        outputTv.string = text
+        updateTextViewAttrs(tv: outputTv)
     }
     
     @discardableResult
@@ -110,7 +122,7 @@ class ViewController: NSViewController {
             return false
         }
         let result = Swifty.modelFromKotlin(text: text)
-        outputTv.string = result
+        updateOutputText(text: result)
         if result.isEmpty {
             showResult(success: false, info: "Error: transfer to swift failed")
             return false
@@ -129,7 +141,7 @@ class ViewController: NSViewController {
             showResult(success: false, info: "Hey man, input your json text~")
             return
         }
-        jsonic.beginParse(text: text, modelName: nameTf.stringValue)
+        jsonic.beginParse(text: text, modelName: nameTf.stringValue, modelSuffix: modelSuffixTf.stringValue)
     }
     
     @IBAction func exportModel(_ sender: Any) {
@@ -158,7 +170,7 @@ extension ViewController: JsonicDelegate {
     func jsonicDidFinished(success: Bool, error: Jsonic.JsonicError) {
         print(success, error)
         if success {
-            outputTv.string = jsonic.modelText(outputType: outputType)
+            updateOutputText(text: jsonic.modelText(outputType: outputType))
         }
         showResult(success: success, info: "Error: \(error.description)")
     }

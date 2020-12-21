@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -712,17 +712,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ1-QU-Zfb">
-                                <rect key="frame" x="18" y="76" width="470" height="526"/>
+                                <rect key="frame" x="18" y="76" width="470" height="511"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Izu-cA-AFo">
-                                    <rect key="frame" x="1" y="1" width="468" height="524"/>
+                                    <rect key="frame" x="1" y="1" width="468" height="509"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7">
-                                            <rect key="frame" x="0.0" y="5" width="468" height="635"/>
+                                            <rect key="frame" x="0.0" y="6" width="468" height="635"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="524"/>
+                                            <size key="minSize" width="468" height="509"/>
                                             <size key="maxSize" width="965" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -823,22 +823,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="iC8-4s-0og">
-                                    <rect key="frame" x="453" y="1" width="16" height="524"/>
+                                    <rect key="frame" x="453" y="1" width="16" height="509"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3T-WP-q05">
-                                <rect key="frame" x="548" y="76" width="434" height="520"/>
+                                <rect key="frame" x="548" y="76" width="434" height="511"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Zh8-JC-lo2">
-                                    <rect key="frame" x="1" y="1" width="432" height="518"/>
+                                    <rect key="frame" x="1" y="1" width="432" height="509"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv">
-                                            <rect key="frame" x="0.0" y="0.0" width="432" height="518"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="432" height="509"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="432" height="518"/>
+                                            <size key="minSize" width="432" height="509"/>
                                             <size key="maxSize" width="942" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -862,12 +862,12 @@ Have a nice day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="80b-vJ-Uw4">
-                                    <rect key="frame" x="417" y="1" width="16" height="518"/>
+                                    <rect key="frame" x="417" y="1" width="16" height="509"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-IB-u9G">
-                                <rect key="frame" x="912" y="609" width="69" height="28"/>
+                                <rect key="frame" x="912" y="600" width="69" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
                                     <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
@@ -906,63 +906,14 @@ Have a nice day.</string>
                                     <action selector="exportModel:" target="XfG-lQ-9wD" id="tQ0-xe-Ehg"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
-                                <rect key="frame" x="547" y="615" width="82" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Model name:" id="8cl-ee-SUv">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
-                                <rect key="frame" x="637" y="611" width="255" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="vhQ-76-C9R"/>
-                                </constraints>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="model name" drawsBackground="YES" id="lMa-a1-Q1f">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
-                                <rect key="frame" x="17" y="614" width="228" height="18"/>
-                                <buttonCell key="cell" type="radio" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="uuD-hs-w1S"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-hk-rSS">
-                                <rect key="frame" x="17" y="643" width="150" height="18"/>
-                                <buttonCell key="cell" type="radio" title="Json to Kotlin Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="2Sg-03-hnA">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="iNd-FP-hr5"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-kC-jjw">
-                                <rect key="frame" x="503" y="326" width="31" height="26"/>
+                                <rect key="frame" x="503" y="319" width="31" height="26"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="=&gt;" id="VjU-qs-QjW">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
-                                <rect key="frame" x="17" y="671" width="146" height="18"/>
-                                <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="jGm-98-GUD"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8iB-yA-OVt">
                                 <rect key="frame" x="20" y="15" width="55" height="22"/>
                                 <constraints>
@@ -976,66 +927,208 @@ Have a nice day.</string>
                                     <action selector="logClicked:" target="XfG-lQ-9wD" id="Ede-yU-eh7"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T0S-sk-iID">
-                                <rect key="frame" x="180" y="643" width="121" height="18"/>
-                                <buttonCell key="cell" type="check" title="SerializedName" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="AVg-Ib-2sW">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-0E-elk">
-                                <rect key="frame" x="307" y="643" width="108" height="18"/>
-                                <buttonCell key="cell" type="check" title="JsonProperty" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4v6-mO-Gkn">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i07-9g-rgl">
+                                <rect key="frame" x="18" y="599" width="389" height="88"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
+                                        <rect key="frame" x="-2" y="71" width="146" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="radioClicked:" target="XfG-lQ-9wD" id="jGm-98-GUD"/>
+                                        </connections>
+                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRZ-Gr-bp6">
+                                        <rect key="frame" x="0.0" y="48" width="389" height="16"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-hk-rSS">
+                                                <rect key="frame" x="-2" y="-1" width="150" height="18"/>
+                                                <buttonCell key="cell" type="radio" title="Json to Kotlin Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="2Sg-03-hnA">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="iNd-FP-hr5"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T0S-sk-iID">
+                                                <rect key="frame" x="154" y="-1" width="121" height="18"/>
+                                                <buttonCell key="cell" type="check" title="SerializedName" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="AVg-Ib-2sW">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-0E-elk">
+                                                <rect key="frame" x="281" y="-1" width="108" height="18"/>
+                                                <buttonCell key="cell" type="check" title="JsonProperty" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4v6-mO-Gkn">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="029-MT-9Vy">
+                                        <rect key="frame" x="-2" y="23" width="143" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Json to Java Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="S8S-Cx-8gB">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="radioClicked:" target="XfG-lQ-9wD" id="AEZ-3E-6TQ"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
+                                        <rect key="frame" x="-2" y="-1" width="228" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="radioClicked:" target="XfG-lQ-9wD" id="uuD-hs-w1S"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCl-j8-alx">
+                                <rect key="frame" x="548" y="600" width="288" height="56"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-lr-KQy">
+                                        <rect key="frame" x="0.0" y="32" width="288" height="24"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-ah-Sgw">
+                                                <rect key="frame" x="-2" y="4" width="84" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Model Suffix:" id="iS3-5H-bdg">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-ai-cCf">
+                                                <rect key="frame" x="88" y="0.0" width="200" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="d8Z-YM-Dhe"/>
+                                                    <constraint firstAttribute="width" constant="200" id="sk5-gc-16O"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" title="Model" placeholderString="model name" drawsBackground="YES" id="2FS-G1-uzi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ko-e5-gAQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
+                                                <rect key="frame" x="-2" y="4" width="84" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Model Name:" id="8cl-ee-SUv">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
+                                                <rect key="frame" x="88" y="0.0" width="200" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="423-p3-QCk"/>
+                                                    <constraint firstAttribute="height" constant="24" id="vhQ-76-C9R"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="border" placeholderString="model name" drawsBackground="YES" id="lMa-a1-Q1f">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="top" secondItem="nlc-hk-rSS" secondAttribute="bottom" constant="13" id="0Q3-iI-RFK"/>
-                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="100" id="4XS-OO-ad2"/>
-                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="leading" secondItem="zho-7K-Ra7" secondAttribute="leading" id="8f2-Ha-bD3"/>
-                            <constraint firstItem="0f0-Ir-Lb0" firstAttribute="centerY" secondItem="bfh-Pk-AUc" secondAttribute="centerY" id="Bwk-e2-Ura"/>
+                            <constraint firstItem="KCl-j8-alx" firstAttribute="leading" secondItem="w3T-WP-q05" secondAttribute="leading" id="1ba-hQ-zfh"/>
+                            <constraint firstItem="i07-9g-rgl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="15" id="ARJ-D1-HKV"/>
                             <constraint firstItem="8iB-yA-OVt" firstAttribute="leading" secondItem="N2a-xj-83m" secondAttribute="leading" id="CTr-Id-vcE"/>
                             <constraint firstItem="00d-k9-o5f" firstAttribute="trailing" secondItem="OBJ-FX-YAv" secondAttribute="trailing" id="Fmc-Nh-XeH"/>
                             <constraint firstItem="qZ1-QU-Zfb" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="18" id="G3g-Xl-Wnt"/>
                             <constraint firstAttribute="trailing" secondItem="w3T-WP-q05" secondAttribute="trailing" constant="18" id="IBa-pP-K8w"/>
-                            <constraint firstItem="bfh-Pk-AUc" firstAttribute="leading" secondItem="OBJ-FX-YAv" secondAttribute="leading" id="Ix3-hs-AMs"/>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="60" id="LFt-AF-n03"/>
-                            <constraint firstItem="nlc-hk-rSS" firstAttribute="leading" secondItem="0f0-Ir-Lb0" secondAttribute="leading" id="LOF-RA-WG8"/>
                             <constraint firstItem="qZ1-QU-Zfb" firstAttribute="width" secondItem="m2S-Jp-Qdl" secondAttribute="width" multiplier="0.5" constant="-30" id="M28-d0-daA"/>
-                            <constraint firstItem="ibE-IB-u9G" firstAttribute="leading" secondItem="Zzl-sD-jgF" secondAttribute="trailing" constant="20" id="Mdy-EA-w0y"/>
-                            <constraint firstItem="T0S-sk-iID" firstAttribute="leading" secondItem="nlc-hk-rSS" secondAttribute="trailing" constant="15" id="OMd-5P-5Xu"/>
                             <constraint firstAttribute="bottom" secondItem="8iB-yA-OVt" secondAttribute="bottom" constant="15" id="QOy-Ch-hPr"/>
+                            <constraint firstItem="w3T-WP-q05" firstAttribute="top" secondItem="KCl-j8-alx" secondAttribute="bottom" constant="13" id="R64-T6-yjI"/>
                             <constraint firstItem="ibE-IB-u9G" firstAttribute="trailing" secondItem="OBJ-FX-YAv" secondAttribute="trailing" id="VZA-97-a9i"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="W8Y-mN-WFm"/>
-                            <constraint firstItem="nlc-hk-rSS" firstAttribute="top" secondItem="94G-8M-f0P" secondAttribute="bottom" constant="12" id="X2f-S5-ehZ"/>
-                            <constraint firstItem="w3T-WP-q05" firstAttribute="top" secondItem="zho-7K-Ra7" secondAttribute="top" id="Zba-e3-bEl"/>
+                            <constraint firstItem="i07-9g-rgl" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="leading" id="ZGp-1o-EXe"/>
                             <constraint firstItem="EcS-kC-jjw" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="17" id="Zcc-bE-xGl"/>
-                            <constraint firstItem="Zzl-sD-jgF" firstAttribute="centerY" secondItem="bfh-Pk-AUc" secondAttribute="centerY" id="c8j-y6-DKe"/>
+                            <constraint firstItem="qZ1-QU-Zfb" firstAttribute="firstBaseline" secondItem="i07-9g-rgl" secondAttribute="baseline" constant="15" id="crh-cs-Jgi"/>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="bottom" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" id="cu0-KW-TdE"/>
-                            <constraint firstItem="SmR-0E-elk" firstAttribute="centerY" secondItem="T0S-sk-iID" secondAttribute="centerY" id="fh2-zf-IXI"/>
                             <constraint firstItem="EcS-kC-jjw" firstAttribute="centerY" secondItem="qZ1-QU-Zfb" secondAttribute="centerY" id="gBc-DN-SgO"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="top" secondItem="qZ1-QU-Zfb" secondAttribute="bottom" constant="12" id="hKK-uu-pKR"/>
                             <constraint firstItem="00d-k9-o5f" firstAttribute="centerY" secondItem="8iB-yA-OVt" secondAttribute="centerY" id="iOR-vW-bmH"/>
                             <constraint firstItem="00d-k9-o5f" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="N6e-ay-pMo" secondAttribute="trailing" constant="20" id="iaO-zM-TF9"/>
-                            <constraint firstItem="T0S-sk-iID" firstAttribute="centerY" secondItem="nlc-hk-rSS" secondAttribute="centerY" id="ibh-9b-u9A"/>
                             <constraint firstItem="N6e-ay-pMo" firstAttribute="leading" secondItem="N2a-xj-83m" secondAttribute="trailing" constant="20" id="n8u-RH-9vb"/>
                             <constraint firstItem="OBJ-FX-YAv" firstAttribute="top" secondItem="ibE-IB-u9G" secondAttribute="bottom" constant="14" id="o3U-94-a2g"/>
                             <constraint firstItem="8iB-yA-OVt" firstAttribute="top" secondItem="N2a-xj-83m" secondAttribute="bottom" constant="10" id="rf3-Mb-SUb"/>
+                            <constraint firstItem="w3T-WP-q05" firstAttribute="top" secondItem="qZ1-QU-Zfb" secondAttribute="top" id="tDr-UO-uJP"/>
                             <constraint firstItem="N6e-ay-pMo" firstAttribute="top" secondItem="N2a-xj-83m" secondAttribute="top" id="u7E-Ja-gcS"/>
-                            <constraint firstItem="Zzl-sD-jgF" firstAttribute="leading" secondItem="bfh-Pk-AUc" secondAttribute="trailing" constant="10" id="v4B-GL-B2M"/>
-                            <constraint firstItem="bfh-Pk-AUc" firstAttribute="centerY" secondItem="ibE-IB-u9G" secondAttribute="centerY" id="wkx-b1-YQ6"/>
-                            <constraint firstItem="94G-8M-f0P" firstAttribute="leading" secondItem="nlc-hk-rSS" secondAttribute="leading" id="xZa-2C-eed"/>
-                            <constraint firstItem="SmR-0E-elk" firstAttribute="leading" secondItem="T0S-sk-iID" secondAttribute="trailing" constant="8" symbolic="YES" id="zxd-pG-UNZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="inputTv" destination="zho-7K-Ra7" id="gXQ-gH-mto"/>
                         <outlet property="jsonPropertyBtn" destination="SmR-0E-elk" id="Xhs-B7-n02"/>
+                        <outlet property="jsonToJavaBtn" destination="029-MT-9Vy" id="Lfn-ar-19I"/>
                         <outlet property="jsonToKotlinBtn" destination="nlc-hk-rSS" id="VUJ-si-Nzm"/>
                         <outlet property="jsonToSwiftBtn" destination="94G-8M-f0P" id="vc1-wb-Ixc"/>
                         <outlet property="kotlinToSwiftBtn" destination="0f0-Ir-Lb0" id="rIG-fd-PiI"/>
+                        <outlet property="modelSuffixTf" destination="e4p-ai-cCf" id="y0x-q3-Nxq"/>
                         <outlet property="nameTf" destination="Zzl-sD-jgF" id="h06-jp-jMB"/>
                         <outlet property="outputTv" destination="OBJ-FX-YAv" id="OmI-vh-95q"/>
                         <outlet property="resultLb" destination="N6e-ay-pMo" id="cDS-EG-Pkq"/>

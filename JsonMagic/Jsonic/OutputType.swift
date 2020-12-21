@@ -18,6 +18,7 @@ public enum OutputType {
     
     case swift
     case kotlin(config: KotlinConfig)
+    case java
     
     internal func fileType() -> String {
         switch self {
@@ -25,6 +26,8 @@ public enum OutputType {
             return "kt"
         case .swift:
             return "swift"
+        case .java:
+            return "java"
         }
     }
     
@@ -35,6 +38,8 @@ public enum OutputType {
             return kotlinObjectDesc(name: name, properties: properties, config: config)
         case .swift:
             return swiftObjectDesc(name: name, properties: properties)
+        case .java:
+            return javaObjectDesc(name: name, properties: properties)
         }
     }
     
@@ -47,11 +52,30 @@ public enum OutputType {
         return text
     }
     
+    private func javaObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
+        var text =
+            """
+            @Data
+            @NoArgsConstructor
+            @AllArgsConstructor\n
+            """
+        text += "public class \(name) {\n"
+        for (index, property) in properties.enumerated() {
+            text += "    @JsonProperty(\"\(property.name)\")\n"
+            text += "    private \(property.type.javaDescription) \(prettyPropertyName(name: property.name));\n"
+            if index < properties.count - 1 {
+                text += "\n"
+            }
+        }
+        text += "}"
+        return text
+    }
+    
     private func kotlinObjectDesc(name: String, properties: [Jsonic.PropertyDefine], config: KotlinConfig) -> String {
         var text = "data class \(name)(\n"
         for (index, property) in properties.enumerated() {
             let serializedName = property.name
-            let realName = kotlinPropertyName(name: serializedName)
+            let realName = prettyPropertyName(name: serializedName)
             text += "   "
             if config.isJsonPropertyEnable {
                 text += "@JsonProperty(\"\(serializedName)\") "
@@ -69,7 +93,7 @@ public enum OutputType {
         return text
     }
     
-    private func kotlinPropertyName(name: String) -> String {
+    private func prettyPropertyName(name: String) -> String {
         let subs = name.split(separator: "_")
         if subs.count <= 1 {
             return name
