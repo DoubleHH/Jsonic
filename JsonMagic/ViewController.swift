@@ -86,9 +86,25 @@ class ViewController: NSViewController {
     }
     
     @IBAction func logClicked(_ sender: Any) {
+        showOkAlert(title: "Log", message: jsonic.logInfo)
+    }
+    
+    @IBAction func copyClicked(_ sender: Any) {
+        let content = jsonic.modelText(outputType: outputType)
+        guard content.count > 0 else {
+            showOkAlert(title: "Copy Fail", message: "No result")
+            return
+        }
+        let pboard = NSPasteboard.general
+        pboard.declareTypes([.string], owner: nil)
+        pboard.setString(content, forType: .string)
+        showOkAlert(title: "Copy Success")
+    }
+    
+    private func showOkAlert(title: String, message: String = "") {
         let alert = NSAlert()
-        alert.informativeText = jsonic.logInfo
-        alert.messageText = "Log"
+        alert.informativeText = message
+        alert.messageText = title
         alert.alertStyle = .informational
         alert.addButton(withTitle: "OK")
         alert.runModal()
