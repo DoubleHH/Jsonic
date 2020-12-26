@@ -37,8 +37,12 @@ public class Jsonic: NSObject, Logable {
         }
     }
     
-    internal indirect enum DataType {
-        case string, int, double, bool, unknown
+    internal indirect enum DataType: Equatable {
+        static func == (lhs: Jsonic.DataType, rhs: Jsonic.DataType) -> Bool {
+            return lhs.swiftDescription == rhs.swiftDescription
+        }
+        
+        case string, int, long, double, bool, unknown
         case array(itemType: DataType)
         case object(name: String, properties: [PropertyDefine])
         
@@ -48,6 +52,8 @@ public class Jsonic: NSObject, Logable {
                 return "String"
             case .int:
                 return "Int"
+            case .long:
+                return "Int64"
             case .double:
                 return "Double"
             case .bool:
@@ -67,6 +73,8 @@ public class Jsonic: NSObject, Logable {
                 return "String"
             case .int:
                 return "Int"
+            case .long:
+                return "Long"
             case .double:
                 return "Double"
             case .bool:
@@ -86,6 +94,8 @@ public class Jsonic: NSObject, Logable {
                 return "String"
             case .int:
                 return "Integer"
+            case .long:
+                return "Long"
             case .double:
                 return "Double"
             case .bool:
@@ -244,6 +254,11 @@ public class Jsonic: NSObject, Logable {
         default:
             type = .string
         }
+        
+        if (key.hasSuffix("_time") || key.hasSuffix("Time")) && type == .int { // deal time type
+            type = .long
+        }
+        
         return type
     }
     
