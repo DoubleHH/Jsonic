@@ -60,6 +60,8 @@ class ViewController: NSViewController {
         jsonic = Jsonic.init(delegate: self)
         inputTv.delegate = self
         outputTv.delegate = self
+        inputTv.isAutomaticQuoteSubstitutionEnabled = false
+        outputTv.isAutomaticQuoteSubstitutionEnabled = false
         updateTransferType()
     }
 
