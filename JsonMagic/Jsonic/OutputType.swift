@@ -19,6 +19,7 @@ public enum OutputType {
     case swift
     case kotlin(config: KotlinConfig)
     case java
+    case objectiveC
     
     internal func fileType() -> String {
         switch self {
@@ -28,6 +29,8 @@ public enum OutputType {
             return "swift"
         case .java:
             return "java"
+        case .objectiveC:
+            return "m"
         }
     }
     
@@ -40,6 +43,8 @@ public enum OutputType {
             return swiftObjectDesc(name: name, properties: properties)
         case .java:
             return javaObjectDesc(name: name, properties: properties)
+        case .objectiveC:
+            return objectiveObjectDesc(name: name, properties: properties)
         }
     }
     
@@ -101,6 +106,15 @@ public enum OutputType {
         return (subs.first ?? "") + subs.suffix(from: 1).reduce("", { (res, item) -> String in
             return res + item.capitalized
         })
+    }
+    
+    private func objectiveObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
+        var text = "@interface \(name): JSONModel {\n"
+        for property in properties {
+            text += "    var \(property.name): \(property.type.swiftDescription)?\n"
+        }
+        text += "}"
+        return text
     }
 }
 

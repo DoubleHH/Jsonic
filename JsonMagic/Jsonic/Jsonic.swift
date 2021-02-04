@@ -108,6 +108,30 @@ public class Jsonic: NSObject, Logable {
                 return "List<" + itemType.kotlinDescription + ">"
             }
         }
+        
+        var objectiveDescription: String {
+            switch self {
+            case .string:
+                return "NSString"
+            case .int:
+                return "int"
+            case .long:
+                return "long"
+            case .double:
+                return "double"
+            case .bool:
+                return "Bool"
+            case .unknown:
+                return "NSString"
+            case .object(let name, _):
+                return name
+            case .array(let itemType):
+                if case .object(_, _) = itemType {
+                    return "NSArray<" + itemType.kotlinDescription + ">"
+                }
+                return "NSArray"
+            }
+        }
     }
     
     internal typealias PropertyDefine = (name: String, type: DataType)
