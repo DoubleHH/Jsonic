@@ -37,101 +37,10 @@ public class Jsonic: NSObject, Logable {
         }
     }
     
-    internal indirect enum DataType: Equatable {
-        static func == (lhs: Jsonic.DataType, rhs: Jsonic.DataType) -> Bool {
-            return lhs.swiftDescription == rhs.swiftDescription
-        }
-        
+    internal indirect enum DataType {
         case string, int, long, double, bool, unknown
         case array(itemType: DataType)
         case object(name: String, properties: [PropertyDefine])
-        
-        var swiftDescription: String {
-            switch self {
-            case .string:
-                return "String"
-            case .int:
-                return "Int"
-            case .long:
-                return "Int64"
-            case .double:
-                return "Double"
-            case .bool:
-                return "Bool"
-            case .unknown:
-                return "String"
-            case .object(let name, _):
-                return name
-            case .array(let itemType):
-                return "Array<" + itemType.swiftDescription + ">"
-            }
-        }
-        
-        var kotlinDescription: String {
-            switch self {
-            case .string:
-                return "String"
-            case .int:
-                return "Int"
-            case .long:
-                return "Long"
-            case .double:
-                return "Double"
-            case .bool:
-                return "Boolean"
-            case .unknown:
-                return "String"
-            case .object(let name, _):
-                return name
-            case .array(let itemType):
-                return "List<" + itemType.kotlinDescription + ">"
-            }
-        }
-        
-        var javaDescription: String {
-            switch self {
-            case .string:
-                return "String"
-            case .int:
-                return "Integer"
-            case .long:
-                return "Long"
-            case .double:
-                return "Double"
-            case .bool:
-                return "Boolean"
-            case .unknown:
-                return "String"
-            case .object(let name, _):
-                return name
-            case .array(let itemType):
-                return "List<" + itemType.kotlinDescription + ">"
-            }
-        }
-        
-        var objectiveDescription: String {
-            switch self {
-            case .string:
-                return "NSString"
-            case .int:
-                return "int"
-            case .long:
-                return "long"
-            case .double:
-                return "double"
-            case .bool:
-                return "Bool"
-            case .unknown:
-                return "NSString"
-            case .object(let name, _):
-                return name
-            case .array(let itemType):
-                if case .object(_, _) = itemType {
-                    return "NSArray<" + itemType.kotlinDescription + ">"
-                }
-                return "NSArray"
-            }
-        }
     }
     
     internal typealias PropertyDefine = (name: String, type: DataType)
@@ -279,7 +188,7 @@ public class Jsonic: NSObject, Logable {
             type = .string
         }
         
-        if (key.hasSuffix("_time") || key.hasSuffix("Time")) && type == .int { // deal time type
+        if case .int = type, (key.hasSuffix("_time") || key.hasSuffix("Time")) {
             type = .long
         }
         

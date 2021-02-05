@@ -25,7 +25,8 @@ class KotlinOutput: Modelable {
                     text += "@SerializedName(\"\(serializedName)\") "
                 }
             }
-            text += "val \(realName): \(property.type.kotlinDescription)? = null"
+            let typeDescription = dataTypeDescription(type: property.type)
+            text += "val \(realName): \(typeDescription)? = null"
             if index < properties.count - 1 {
                 text += ","
             }
@@ -52,7 +53,8 @@ class KotlinOutput: Modelable {
         case .object(let name, _):
             return name
         case .array(let itemType):
-            return "List<" + itemType.kotlinDescription + ">"
+            let typeDescription = dataTypeDescription(type: itemType)
+            return "List<" + typeDescription + ">"
         }
     }
 }

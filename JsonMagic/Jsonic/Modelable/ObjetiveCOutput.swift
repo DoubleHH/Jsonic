@@ -18,11 +18,11 @@ class ObjetiveCOutput : Modelable {
         // interface
         var text = "@interface \(name): JSONModel {\n"
         for property in properties {
-            let typeDescription = property.type.swiftDescription
+            let typeDescription = dataTypeDescription(type: property.type)
             if isObjectType(typeDescrition: typeDescription) {
                 text += "@property (nonatomic, strong) \(typeDescription) *\(property.name);\n"
             } else {
-                text += "@property (nonatomic, strong) \(typeDescription) \(property.name);\n"
+                text += "@property (nonatomic, assign) \(typeDescription) \(property.name);\n"
             }
         }
         text += "}"
@@ -58,7 +58,8 @@ class ObjetiveCOutput : Modelable {
             return name
         case .array(let itemType):
             if case .object(_, _) = itemType {
-                return "NSArray<" + itemType.kotlinDescription + ">"
+                let typeDescription = dataTypeDescription(type: itemType)
+                return "NSArray<" + typeDescription + ">"
             }
             return "NSArray"
         }

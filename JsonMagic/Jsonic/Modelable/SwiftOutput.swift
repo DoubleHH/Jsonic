@@ -14,7 +14,8 @@ class SwiftOutput: Modelable {
     func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: DefaultModelConfig?) -> String {
         var text = "class \(name): Codable {\n"
         for property in properties {
-            text += "    var \(property.name): \(property.type.swiftDescription)?\n"
+            let typeDescription = dataTypeDescription(type: property.type)
+            text += "    var \(property.name): \(typeDescription)?\n"
         }
         text += "}"
         return text
@@ -37,7 +38,8 @@ class SwiftOutput: Modelable {
         case .object(let name, _):
             return name
         case .array(let itemType):
-            return "Array<" + itemType.swiftDescription + ">"
+            let typeDescription = dataTypeDescription(type: itemType)
+            return "Array<" + typeDescription + ">"
         }
     }
 }

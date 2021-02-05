@@ -712,17 +712,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ1-QU-Zfb">
-                                <rect key="frame" x="18" y="78" width="470" height="509"/>
+                                <rect key="frame" x="18" y="78" width="470" height="485"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Izu-cA-AFo">
-                                    <rect key="frame" x="1" y="1" width="468" height="507"/>
+                                    <rect key="frame" x="1" y="1" width="468" height="483"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7">
-                                            <rect key="frame" x="0.0" y="7" width="468" height="634"/>
+                                            <rect key="frame" x="0.0" y="7" width="468" height="635"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="507"/>
+                                            <size key="minSize" width="468" height="483"/>
                                             <size key="maxSize" width="965" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -823,22 +823,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="iC8-4s-0og">
-                                    <rect key="frame" x="453" y="1" width="16" height="507"/>
+                                    <rect key="frame" x="453" y="1" width="16" height="483"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3T-WP-q05">
-                                <rect key="frame" x="548" y="78" width="434" height="509"/>
+                                <rect key="frame" x="548" y="78" width="434" height="485"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Zh8-JC-lo2">
-                                    <rect key="frame" x="1" y="1" width="432" height="507"/>
+                                    <rect key="frame" x="1" y="1" width="432" height="483"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv">
-                                            <rect key="frame" x="0.0" y="0.0" width="432" height="507"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="432" height="483"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="432" height="507"/>
+                                            <size key="minSize" width="432" height="483"/>
                                             <size key="maxSize" width="942" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -862,12 +862,12 @@ Have a nice day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="80b-vJ-Uw4">
-                                    <rect key="frame" x="417" y="1" width="16" height="507"/>
+                                    <rect key="frame" x="417" y="1" width="16" height="483"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-IB-u9G">
-                                <rect key="frame" x="912" y="600" width="69" height="28"/>
+                                <rect key="frame" x="912" y="576" width="69" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
                                     <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
@@ -897,7 +897,7 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-kC-jjw">
-                                <rect key="frame" x="503" y="320" width="32" height="26"/>
+                                <rect key="frame" x="503" y="308" width="32" height="26"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="=&gt;" id="VjU-qs-QjW">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -918,10 +918,10 @@ Have a nice day.</string>
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i07-9g-rgl">
-                                <rect key="frame" x="18" y="599" width="372" height="88"/>
+                                <rect key="frame" x="18" y="575" width="372" height="112"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
-                                        <rect key="frame" x="-1" y="71" width="142" height="18"/>
+                                        <rect key="frame" x="-1" y="95" width="142" height="18"/>
                                         <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -931,7 +931,7 @@ Have a nice day.</string>
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRZ-Gr-bp6">
-                                        <rect key="frame" x="0.0" y="48" width="372" height="16"/>
+                                        <rect key="frame" x="0.0" y="72" width="372" height="16"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-hk-rSS">
                                                 <rect key="frame" x="-1" y="-1" width="146" height="18"/>
@@ -970,13 +970,23 @@ Have a nice day.</string>
                                         </customSpacing>
                                     </stackView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="029-MT-9Vy">
-                                        <rect key="frame" x="-1" y="23" width="139" height="18"/>
+                                        <rect key="frame" x="-1" y="47" width="139" height="18"/>
                                         <buttonCell key="cell" type="radio" title="Json to Java Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="S8S-Cx-8gB">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="radioClicked:" target="XfG-lQ-9wD" id="AEZ-3E-6TQ"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-vD-UPw">
+                                        <rect key="frame" x="-1" y="23" width="187" height="18"/>
+                                        <buttonCell key="cell" type="radio" title="Json To Objective-C Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GZ5-qE-pJz">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="radioClicked:" target="XfG-lQ-9wD" id="eNI-r9-WMD"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
@@ -995,8 +1005,10 @@ Have a nice day.</string>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -1004,7 +1016,7 @@ Have a nice day.</string>
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KCl-j8-alx">
-                                <rect key="frame" x="548" y="600" width="288" height="56"/>
+                                <rect key="frame" x="548" y="576" width="288" height="56"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-lr-KQy">
                                         <rect key="frame" x="0.0" y="32" width="288" height="24"/>
@@ -1148,6 +1160,7 @@ Have a nice day.</string>
                         <outlet property="jsonPropertyBtn" destination="SmR-0E-elk" id="Xhs-B7-n02"/>
                         <outlet property="jsonToJavaBtn" destination="029-MT-9Vy" id="Lfn-ar-19I"/>
                         <outlet property="jsonToKotlinBtn" destination="nlc-hk-rSS" id="VUJ-si-Nzm"/>
+                        <outlet property="jsonToObjectiveCBtn" destination="fhz-vD-UPw" id="tio-7o-m2Y"/>
                         <outlet property="jsonToSwiftBtn" destination="94G-8M-f0P" id="vc1-wb-Ixc"/>
                         <outlet property="kotlinToSwiftBtn" destination="0f0-Ir-Lb0" id="rIG-fd-PiI"/>
                         <outlet property="modelSuffixTf" destination="e4p-ai-cCf" id="y0x-q3-Nxq"/>

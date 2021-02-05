@@ -23,7 +23,7 @@ extension ViewController: NSTextViewDelegate {
 
 class ViewController: NSViewController {
     enum TransferType {
-        case jsonToSwift, jsonToKotlin, jsonToJava, kotlinToSwift
+        case jsonToSwift, jsonToKotlin, jsonToJava, jsonToObjectiveC, kotlinToSwift
     }
     
     @IBOutlet var inputTv: NSTextView!
@@ -35,6 +35,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var jsonToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToKotlinBtn: NSButton!
     @IBOutlet weak var jsonToJavaBtn: NSButton!
+    @IBOutlet weak var jsonToObjectiveCBtn: NSButton!
     @IBOutlet weak var serializedBtn: NSButton!
     @IBOutlet weak var jsonPropertyBtn: NSButton!
     
@@ -46,7 +47,11 @@ class ViewController: NSViewController {
             return .kotlin(config: outputKotlinConfig)
         case .jsonToJava:
             return .java
-        default:
+        case .jsonToObjectiveC:
+            return .objectiveC
+        case .jsonToSwift:
+            return .swift
+        case .kotlinToSwift:
             return .swift
         }
     }
@@ -67,7 +72,7 @@ class ViewController: NSViewController {
 
     @IBAction func run(_ sender: NSButton) {
         switch transferType {
-        case .jsonToSwift, .jsonToKotlin, .jsonToJava:
+        case .jsonToSwift, .jsonToKotlin, .jsonToJava, .jsonToObjectiveC:
             doJsonic()
         case .kotlinToSwift:
             doSwifty()
@@ -83,6 +88,8 @@ class ViewController: NSViewController {
             transferType = TransferType.jsonToJava
         } else if jsonToKotlinBtn == sender {
             transferType = TransferType.jsonToKotlin
+        } else if jsonToObjectiveCBtn == sender {
+            transferType = TransferType.jsonToObjectiveC
         }
         updateTransferType()
     }
@@ -121,6 +128,8 @@ class ViewController: NSViewController {
             jsonToKotlinBtn.state = .on
         case .jsonToJava:
             jsonToJavaBtn.state = .on
+        case .jsonToObjectiveC:
+            jsonToObjectiveCBtn.state = .on
         case .kotlinToSwift:
             kotlinToSwiftBtn.state = .on
         }

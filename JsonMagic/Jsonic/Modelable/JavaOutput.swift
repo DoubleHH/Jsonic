@@ -21,8 +21,9 @@ class JavaOutput: Modelable {
         text += "public class \(name) {\n"
         for (index, property) in properties.enumerated() {
             text += "    @JsonProperty(\"\(property.name)\")\n"
+            let typeDescription = dataTypeDescription(type: property.type)
             let camelCaseName = FormatUtil.underlineToCamelCase(name: property.name)
-            text += "    private \(property.type.javaDescription) \(camelCaseName));\n"
+            text += "    private \(typeDescription) \(camelCaseName));\n"
             if index < properties.count - 1 {
                 text += "\n"
             }
@@ -48,7 +49,8 @@ class JavaOutput: Modelable {
         case .object(let name, _):
             return name
         case .array(let itemType):
-            return "List<" + itemType.kotlinDescription + ">"
+            let typeDescription = dataTypeDescription(type: itemType)
+            return "List<" + typeDescription + ">"
         }
     }
 }
