@@ -9,10 +9,12 @@
 import Foundation
 
 class ObjetiveCOutput : Modelable {
+    typealias ModelConfig = DefaultModelConfig
+    
     private let objectTypes = ["NSString", "NSArray"]
     private let normalTypes = ["int", "long", "double", "Bool"]
     
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine]) -> String {
+    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: DefaultModelConfig?) -> String {
         // interface
         var text = "@interface \(name): JSONModel {\n"
         for property in properties {

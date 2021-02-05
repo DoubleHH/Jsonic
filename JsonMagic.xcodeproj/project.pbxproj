@@ -17,6 +17,10 @@
 		288255CF2399197C00A1DE56 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288255CE2399197C00A1DE56 /* StringExtensions.swift */; };
 		288255E8239A642800A1DE56 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288255E7239A642800A1DE56 /* FileUtil.swift */; };
 		28D61706258F66DB003A9021 /* OutputType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D61705258F66DB003A9021 /* OutputType.swift */; };
+		536C441425CCC17A0050F1A9 /* JavaOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C441325CCC17A0050F1A9 /* JavaOutput.swift */; };
+		536C441825CCC1E50050F1A9 /* FormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C441725CCC1E50050F1A9 /* FormatUtil.swift */; };
+		536C441C25CCC34A0050F1A9 /* SwiftOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C441B25CCC34A0050F1A9 /* SwiftOutput.swift */; };
+		536C441F25CCC3550050F1A9 /* KotlinOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C441E25CCC3550050F1A9 /* KotlinOutput.swift */; };
 		53FB990325CB7C3400E8EB71 /* Modelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB990225CB7C3400E8EB71 /* Modelable.swift */; };
 		53FB990725CB7CD000E8EB71 /* ObjetiveCOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB990625CB7CD000E8EB71 /* ObjetiveCOutput.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +39,10 @@
 		288255CE2399197C00A1DE56 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		288255E7239A642800A1DE56 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
 		28D61705258F66DB003A9021 /* OutputType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputType.swift; sourceTree = "<group>"; };
+		536C441325CCC17A0050F1A9 /* JavaOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaOutput.swift; sourceTree = "<group>"; };
+		536C441725CCC1E50050F1A9 /* FormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatUtil.swift; sourceTree = "<group>"; };
+		536C441B25CCC34A0050F1A9 /* SwiftOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOutput.swift; sourceTree = "<group>"; };
+		536C441E25CCC3550050F1A9 /* KotlinOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KotlinOutput.swift; sourceTree = "<group>"; };
 		53FB990225CB7C3400E8EB71 /* Modelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modelable.swift; sourceTree = "<group>"; };
 		53FB990625CB7CD000E8EB71 /* ObjetiveCOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetiveCOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +101,7 @@
 		288255C82398EB6500A1DE56 /* Jsonic */ = {
 			isa = PBXGroup;
 			children = (
+				536C441625CCC1CC0050F1A9 /* Utils */,
 				53FB990125CB7BD400E8EB71 /* Modelable */,
 				288255C92398EB7A00A1DE56 /* Jsonic.swift */,
 				288255CE2399197C00A1DE56 /* StringExtensions.swift */,
@@ -102,11 +111,22 @@
 			path = Jsonic;
 			sourceTree = "<group>";
 		};
+		536C441625CCC1CC0050F1A9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				536C441725CCC1E50050F1A9 /* FormatUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		53FB990125CB7BD400E8EB71 /* Modelable */ = {
 			isa = PBXGroup;
 			children = (
 				53FB990225CB7C3400E8EB71 /* Modelable.swift */,
 				53FB990625CB7CD000E8EB71 /* ObjetiveCOutput.swift */,
+				536C441325CCC17A0050F1A9 /* JavaOutput.swift */,
+				536C441B25CCC34A0050F1A9 /* SwiftOutput.swift */,
+				536C441E25CCC3550050F1A9 /* KotlinOutput.swift */,
 			);
 			path = Modelable;
 			sourceTree = "<group>";
@@ -189,8 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				536C441425CCC17A0050F1A9 /* JavaOutput.swift in Sources */,
 				288255CF2399197C00A1DE56 /* StringExtensions.swift in Sources */,
 				53FB990325CB7C3400E8EB71 /* Modelable.swift in Sources */,
+				536C441C25CCC34A0050F1A9 /* SwiftOutput.swift in Sources */,
 				288255CA2398EB7A00A1DE56 /* Jsonic.swift in Sources */,
 				2839F4FC239E150400C293C9 /* Swifty.swift in Sources */,
 				288255B92398E73200A1DE56 /* ViewController.swift in Sources */,
@@ -198,6 +220,8 @@
 				288255B72398E73200A1DE56 /* AppDelegate.swift in Sources */,
 				2839080C258E28B20090AFB1 /* Logable.swift in Sources */,
 				53FB990725CB7CD000E8EB71 /* ObjetiveCOutput.swift in Sources */,
+				536C441F25CCC3550050F1A9 /* KotlinOutput.swift in Sources */,
+				536C441825CCC1E50050F1A9 /* FormatUtil.swift in Sources */,
 				28D61706258F66DB003A9021 /* OutputType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -51,8 +51,8 @@ class ViewController: NSViewController {
         }
     }
     private var outputKotlinConfig: OutputType.KotlinConfig {
-        return OutputType.KotlinConfig(isSerializedNameEnable: serializedBtn.state == .on,
-                                       isJsonPropertyEnable: jsonPropertyBtn.state == .on)
+        return OutputType.KotlinConfig(serializedNameEnable: serializedBtn.state == .on,
+                                       jsonPropertyEnable: jsonPropertyBtn.state == .on)
     }
     
     override func viewDidLoad() {

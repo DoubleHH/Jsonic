@@ -8,8 +8,15 @@
 
 import Foundation
 
+/** Model Config protocol */
+protocol ModelConfigable { }
+
+/** Default config */
+internal class DefaultModelConfig: ModelConfigable { }
+
 // Generate model class description according to it's definition
 protocol Modelable {
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine]) -> String
+    associatedtype ModelConfig
+    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: ModelConfig?) -> String
     func dataTypeDescription(type: Jsonic.DataType) -> String
 }

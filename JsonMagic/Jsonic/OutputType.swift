@@ -9,11 +9,17 @@
 import Foundation
 
 public enum OutputType {
-    public struct KotlinConfig {
+    public class KotlinConfig: ModelConfigable {
         /// should output SerializedName
-        var isSerializedNameEnable: Bool
+        var isSerializedNameEnable: Bool = false
         /// should output JsonProperty
-        var isJsonPropertyEnable: Bool
+        var isJsonPropertyEnable: Bool = false
+        
+        convenience init(serializedNameEnable: Bool, jsonPropertyEnable: Bool) {
+            self.init()
+            isSerializedNameEnable = serializedNameEnable
+            isJsonPropertyEnable = jsonPropertyEnable
+        }
     }
     
     case swift
@@ -38,83 +44,14 @@ public enum OutputType {
         guard case let Jsonic.DataType.object(name, properties) = item else { return nil }
         switch self {
         case .kotlin(let config):
-            return kotlinObjectDesc(name: name, properties: properties, config: config)
+            return KotlinOutput().modelDescription(name: name, properties: properties, config: config)
         case .swift:
-            return swiftObjectDesc(name: name, properties: properties)
+            return SwiftOutput().modelDescription(name: name, properties: properties, config: nil)
         case .java:
-            return javaObjectDesc(name: name, properties: properties)
+            return JavaOutput().modelDescription(name: name, properties: properties, config: nil)
         case .objectiveC:
-            return objectiveObjectDesc(name: name, properties: properties)
+            return ObjetiveCOutput().modelDescription(name: name, properties: properties, config: nil)
         }
-    }
-    
-    private func swiftObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
-        var text = "class \(name): Codable {\n"
-        for property in properties {
-            text += "    var \(property.name): \(property.type.swiftDescription)?\n"
-        }
-        text += "}"
-        return text
-    }
-    
-    private func javaObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
-        var text =
-            """
-            @Data
-            @NoArgsConstructor
-            @AllArgsConstructor\n
-            """
-        text += "public class \(name) {\n"
-        for (index, property) in properties.enumerated() {
-            text += "    @JsonProperty(\"\(property.name)\")\n"
-            text += "    private \(property.type.javaDescription) \(prettyPropertyName(name: property.name));\n"
-            if index < properties.count - 1 {
-                text += "\n"
-            }
-        }
-        text += "}"
-        return text
-    }
-    
-    private func kotlinObjectDesc(name: String, properties: [Jsonic.PropertyDefine], config: KotlinConfig) -> String {
-        var text = "data class \(name)(\n"
-        for (index, property) in properties.enumerated() {
-            let serializedName = property.name
-            let realName = prettyPropertyName(name: serializedName)
-            text += "   "
-            if config.isJsonPropertyEnable {
-                text += "@JsonProperty(\"\(serializedName)\") "
-            }
-            if config.isSerializedNameEnable {
-                text += "@SerializedName(\"\(serializedName)\") "
-            }
-            text += "val \(realName): \(property.type.kotlinDescription)? = null"
-            if index < properties.count - 1 {
-                text += ","
-            }
-            text += "\n"
-        }
-        text += ")"
-        return text
-    }
-    
-    private func prettyPropertyName(name: String) -> String {
-        let subs = name.split(separator: "_")
-        if subs.count <= 1 {
-            return name
-        }
-        return (subs.first ?? "") + subs.suffix(from: 1).reduce("", { (res, item) -> String in
-            return res + item.capitalized
-        })
-    }
-    
-    private func objectiveObjectDesc(name: String, properties: [Jsonic.PropertyDefine]) -> String {
-        var text = "@interface \(name): JSONModel {\n"
-        for property in properties {
-            text += "    var \(property.name): \(property.type.swiftDescription)?\n"
-        }
-        text += "}"
-        return text
     }
 }
 

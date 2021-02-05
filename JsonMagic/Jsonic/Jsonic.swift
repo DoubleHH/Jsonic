@@ -174,7 +174,7 @@ public class Jsonic: NSObject, Logable {
             //
             """
             return content + "\n\n\n" + modelDesc
-        case .kotlin, .java:
+        case .kotlin, .java, .objectiveC:
             return modelDesc
         }
         
