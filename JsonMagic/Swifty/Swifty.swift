@@ -90,8 +90,8 @@ struct Swifty {
             pname = propertyType.split(separator: " ")[1].trimmingCharacters(in: .init(charactersIn: ":"))
         }
         
-        guard let pname = pname, !pname.isEmpty else { return nil }
-        return (p: pname, n: lines[1])
+        guard let name = pname, !name.isEmpty else { return nil }
+        return (p: name, n: lines[1])
     }
     
     private static func checkModelEnd(line: String) -> Bool {
