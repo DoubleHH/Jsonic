@@ -9,7 +9,7 @@
 import Foundation
 
 struct Swifty {
-    private static let MODEL_PATTERN = "data\\s+class\\s+\\w+"
+    private static let MODEL_PATTERN = "(data\\s+)?class\\s+\\w+"
     private static let CONCRETE_MODEL_PATTERN = "\\w*Model"
     private static let PROPERTY_NAME_PATTERN = "\"\\w*\""
     private static let PROPERTY_TYPE_PATTERN = "va[rl]\\s+\\w+\\s*:\\s*[\\w,<,>]+"
@@ -24,6 +24,7 @@ struct Swifty {
     }
     
     private static func processSingleModel(text: String) -> String {
+        let propertyAndNoteMap = computerPropertyAndNoteMap(text: text)
         let lines = text.split(separator: ",")
         var isProcessing: Bool = false
         var result = ""
@@ -35,10 +36,10 @@ struct Swifty {
                 if let modelName = modelName(line: item) {
                     isProcessing = true
                     result += "class \(modelName): Codable {\n"
-                    result += dealPropertyLine(line: item)
+                    result += dealPropertyLine(line: item, propertyAndNoteMap: propertyAndNoteMap)
                 }
             } else {
-                result += dealPropertyLine(line: item)
+                result += dealPropertyLine(line: item, propertyAndNoteMap: propertyAndNoteMap)
             }
             if isProcessing && checkModelEnd(line: item) {
                 isProcessing = false
@@ -46,6 +47,51 @@ struct Swifty {
             }
         }
         return result
+    }
+    
+    private static func computerPropertyAndNoteMap(text: String) -> [String: String] {
+        var result: [String: String] = [:]
+        let lines = text.components(separatedBy: "@SerializedName(")
+        var isProcessing: Bool = false
+        for line in lines {
+            let item = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            if item.isEmpty { continue }
+            
+            if !isProcessing {
+                if let _ = modelName(line: item) {
+                    isProcessing = true
+                }
+            } else {
+                if let pn = dealPropertyToNoteLine(line: line) {
+                    result[pn.p] = pn.n
+                }
+            }
+            if isProcessing && checkModelEnd(line: item) {
+                isProcessing = false
+            }
+        }
+        return result
+    }
+    
+    private static func dealPropertyToNoteLine(line: String) -> (p: String, n: String)? {
+        let lines = line.components(separatedBy: "//")
+        if lines.count < 2 || lines[1].isEmpty {
+            return nil
+        }
+        
+        guard let propertyType = NSRegularExpression.matches(regex: PROPERTY_TYPE_PATTERN, validateString: line).first?.trimmingCharacters(in: .whitespacesAndNewlines),
+        let _ = propertyType.split(separator: ":").last else { return nil }
+        
+        var pname: String? = nil
+        let propertyName = NSRegularExpression.matches(regex: PROPERTY_NAME_PATTERN, validateString: line).first
+        if let tempPname = propertyName {
+            pname = tempPname.replacingOccurrences(of: "\"", with: "").trimmingCharacters(in: .whitespaces)
+        } else {
+            pname = propertyType.split(separator: " ")[1].trimmingCharacters(in: .init(charactersIn: ":"))
+        }
+        
+        guard let pname = pname, !pname.isEmpty else { return nil }
+        return (p: pname, n: lines[1])
     }
     
     private static func checkModelEnd(line: String) -> Bool {
@@ -83,7 +129,7 @@ struct Swifty {
         return NSRegularExpression.matches(regex: CONCRETE_MODEL_PATTERN, validateString: modelName).first
     }
     
-    private static func dealPropertyLine(line: String) -> String {
+    private static func dealPropertyLine(line: String, propertyAndNoteMap: [String: String]) -> String {
         guard let propertyType = NSRegularExpression.matches(regex: PROPERTY_TYPE_PATTERN, validateString: line).first?.trimmingCharacters(in: .whitespacesAndNewlines),
         let ptype = propertyType.split(separator: ":").last else { return "" }
         
@@ -96,6 +142,10 @@ struct Swifty {
         }
         
         let type = ptype.replacingOccurrences(of: "ArrayList", with: "Array").trimmingCharacters(in: .whitespaces)
+        
+        if let note = propertyAndNoteMap[pname ?? ""] {
+            return "    /// \(note)\n    var \(pname ?? ""): \(type)?\n"
+        }
         return "    var \(pname ?? ""): \(type)?\n"
     }
     
