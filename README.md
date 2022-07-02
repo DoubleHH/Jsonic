@@ -1,5 +1,7 @@
 # JsonMagic 一个 Json 转 Model 的工具
 
+[掘金文章链接](https://juejin.cn/post/6923848407446454285)
+
 ### v1.1.6 Update！
 🧨🧨喜大普奔🧨🧨 ：2021-02-06 v1.1.6 发布!
 
