@@ -23,7 +23,7 @@ extension ViewController: NSTextViewDelegate {
 
 class ViewController: NSViewController {
     enum TransferType {
-        case jsonToSwift, yapiJsonToSwift, jsonToKotlin, jsonToJava, jsonToObjectiveC, kotlinToSwift
+        case jsonToSwift, jsonToKotlin, jsonToJava, jsonToObjectiveC, kotlinToSwift
     }
     
     @IBOutlet var inputTv: NSTextView!
@@ -33,12 +33,12 @@ class ViewController: NSViewController {
     @IBOutlet weak var nameTf: NSTextField!
     @IBOutlet weak var kotlinToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToSwiftBtn: NSButton!
-    @IBOutlet weak var yapiJsonToSwiftBtn: NSButton!
     @IBOutlet weak var jsonToKotlinBtn: NSButton!
     @IBOutlet weak var jsonToJavaBtn: NSButton!
     @IBOutlet weak var jsonToObjectiveCBtn: NSButton!
     @IBOutlet weak var serializedBtn: NSButton!
     @IBOutlet weak var jsonPropertyBtn: NSButton!
+    @IBOutlet weak var fromYapiJsonBtn: NSButton!
     
     private var jsonic: Jsonic!
     private var transferType = TransferType.jsonToSwift
@@ -51,8 +51,6 @@ class ViewController: NSViewController {
         case .jsonToObjectiveC:
             return .objectiveC
         case .jsonToSwift:
-            return .swift
-        case .yapiJsonToSwift:
             return .swift
         case .kotlinToSwift:
             return .swift
@@ -75,7 +73,7 @@ class ViewController: NSViewController {
 
     @IBAction func run(_ sender: NSButton) {
         switch transferType {
-        case .jsonToSwift, .yapiJsonToSwift, .jsonToKotlin, .jsonToJava, .jsonToObjectiveC:
+        case .jsonToSwift, .jsonToKotlin, .jsonToJava, .jsonToObjectiveC:
             doJsonic()
         case .kotlinToSwift:
             doSwifty()
@@ -87,8 +85,6 @@ class ViewController: NSViewController {
             transferType = TransferType.kotlinToSwift
         } else if jsonToSwiftBtn == sender {
             transferType = TransferType.jsonToSwift
-        } else if yapiJsonToSwiftBtn == sender {
-            transferType = TransferType.yapiJsonToSwift
         } else if jsonToJavaBtn == sender {
             transferType = TransferType.jsonToJava
         } else if jsonToKotlinBtn == sender {
@@ -129,8 +125,6 @@ class ViewController: NSViewController {
         switch transferType {
         case .jsonToSwift:
             jsonToSwiftBtn.state = .on
-        case .yapiJsonToSwift:
-            yapiJsonToSwiftBtn.state = .on
         case .jsonToKotlin:
             jsonToKotlinBtn.state = .on
         case .jsonToJava:
@@ -175,7 +169,7 @@ class ViewController: NSViewController {
             showResult(success: false, info: "Hey man, input your json text~")
             return
         }
-        let source: Jsonic.TextSource = transferType == .yapiJsonToSwift ? .yapiJson : .plainJson
+        let source: Jsonic.TextSource = fromYapiJsonBtn.state == .on ? .yapiJson : .plainJson
         jsonic.beginParse(text: text, source: source, modelName: nameTf.stringValue, modelSuffix: modelSuffixTf.stringValue)
     }
     

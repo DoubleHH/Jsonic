@@ -269,7 +269,9 @@ extension Jsonic {
     private func objectPropertiesFromYapi(jsonObject: [String: YapiJsonModel]?) -> [PropertyDefine] {
         var properties: [PropertyDefine] = []
         guard let jsonObject = jsonObject else { return properties }
-        for (key, value) in jsonObject {
+        let sortedKeys = jsonObject.keys.sorted()
+        for key in sortedKeys {
+            let value = jsonObject[key]!
             let type = getDataTypeFromYapi(key: key, value: value)
             properties.append((name: key.trimmingCharacters(in: .whitespacesAndNewlines), type: type, note: value.description ?? ""))
         }
