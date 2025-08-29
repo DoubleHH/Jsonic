@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -712,17 +712,17 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZ1-QU-Zfb">
-                                <rect key="frame" x="18" y="78" width="470" height="485"/>
+                                <rect key="frame" x="18" y="76" width="470" height="487"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Izu-cA-AFo">
-                                    <rect key="frame" x="1" y="1" width="468" height="483"/>
+                                    <rect key="frame" x="1" y="1" width="468" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="zho-7K-Ra7">
-                                            <rect key="frame" x="0.0" y="7" width="468" height="635"/>
+                                            <rect key="frame" x="0.0" y="8" width="468" height="635"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="468" height="483"/>
+                                            <size key="minSize" width="468" height="485"/>
                                             <size key="maxSize" width="965" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -823,22 +823,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="iC8-4s-0og">
-                                    <rect key="frame" x="453" y="1" width="16" height="483"/>
+                                    <rect key="frame" x="453" y="1" width="16" height="485"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <scrollView borderType="line" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3T-WP-q05">
-                                <rect key="frame" x="548" y="78" width="434" height="485"/>
+                                <rect key="frame" x="548" y="76" width="434" height="487"/>
                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="Zh8-JC-lo2">
-                                    <rect key="frame" x="1" y="1" width="432" height="483"/>
+                                    <rect key="frame" x="1" y="1" width="432" height="485"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="OBJ-FX-YAv">
-                                            <rect key="frame" x="0.0" y="0.0" width="432" height="483"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="432" height="485"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            <size key="minSize" width="432" height="483"/>
+                                            <size key="minSize" width="432" height="485"/>
                                             <size key="maxSize" width="942" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment>
@@ -862,42 +862,42 @@ Have a nice day.</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="80b-vJ-Uw4">
-                                    <rect key="frame" x="417" y="1" width="16" height="483"/>
+                                    <rect key="frame" x="417" y="1" width="16" height="485"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibE-IB-u9G">
                                 <rect key="frame" x="912" y="576" width="69" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
-                                    <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
-                                </constraints>
                                 <buttonCell key="cell" type="square" title="Run" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ju-b7-b2B">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="V5A-bX-eQk"/>
+                                    <constraint firstAttribute="height" constant="28" id="mGr-K9-vE5"/>
+                                </constraints>
                                 <connections>
                                     <action selector="run:" target="XfG-lQ-9wD" id="TqG-0Q-3Wv"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-xj-83m">
-                                <rect key="frame" x="18" y="49" width="49" height="17"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="N2a-xj-83m">
+                                <rect key="frame" x="18" y="47" width="49" height="17"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Result:" id="gfR-2C-jka">
                                     <font key="font" metaFont="menu" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N6e-ay-pMo">
-                                <rect key="frame" x="83" y="49" width="24" height="17"/>
+                            <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="N6e-ay-pMo">
+                                <rect key="frame" x="83" y="47" width="24" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" title="---" id="WeL-No-llQ">
                                     <font key="font" metaFont="menu" size="14"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-kC-jjw">
-                                <rect key="frame" x="503" y="308" width="32" height="26"/>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EcS-kC-jjw">
+                                <rect key="frame" x="503" y="307" width="31" height="26"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="=&gt;" id="VjU-qs-QjW">
                                     <font key="font" metaFont="system" size="22"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -905,36 +905,59 @@ Have a nice day.</string>
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8iB-yA-OVt">
-                                <rect key="frame" x="20" y="15" width="55" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="4HV-oP-Lgq"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="15" width="55" height="22"/>
                                 <buttonCell key="cell" type="square" title="Log" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4x8-Fm-dx0">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="4HV-oP-Lgq"/>
+                                </constraints>
                                 <connections>
                                     <action selector="logClicked:" target="XfG-lQ-9wD" id="Ede-yU-eh7"/>
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i07-9g-rgl">
-                                <rect key="frame" x="18" y="575" width="372" height="112"/>
+                                <rect key="frame" x="18" y="575" width="389" height="112"/>
                                 <subviews>
-                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
-                                        <rect key="frame" x="-1" y="95" width="142" height="18"/>
-                                        <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
-                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="radioClicked:" target="XfG-lQ-9wD" id="jGm-98-GUD"/>
-                                        </connections>
-                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQi-jL-vRd">
+                                        <rect key="frame" x="0.0" y="96" width="325" height="16"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="94G-8M-f0P">
+                                                <rect key="frame" x="-2" y="-1" width="146" height="18"/>
+                                                <buttonCell key="cell" type="radio" title="Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhU-LH-wF8">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="jGm-98-GUD"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T7S-Xm-Ik0">
+                                                <rect key="frame" x="150" y="-1" width="175" height="18"/>
+                                                <buttonCell key="cell" type="radio" title="Yapi Json to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Llf-fd-8ap">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="radioClicked:" target="XfG-lQ-9wD" id="2lC-KJ-ctY"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRZ-Gr-bp6">
-                                        <rect key="frame" x="0.0" y="72" width="372" height="16"/>
+                                        <rect key="frame" x="0.0" y="72" width="389" height="16"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nlc-hk-rSS">
-                                                <rect key="frame" x="-1" y="-1" width="146" height="18"/>
+                                                <rect key="frame" x="-2" y="-1" width="150" height="18"/>
                                                 <buttonCell key="cell" type="radio" title="Json to Kotlin Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="2Sg-03-hnA">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -944,14 +967,14 @@ Have a nice day.</string>
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T0S-sk-iID">
-                                                <rect key="frame" x="149" y="0.0" width="117" height="18"/>
+                                                <rect key="frame" x="154" y="-1" width="121" height="18"/>
                                                 <buttonCell key="cell" type="check" title="SerializedName" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="AVg-Ib-2sW">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SmR-0E-elk">
-                                                <rect key="frame" x="270" y="0.0" width="104" height="18"/>
+                                                <rect key="frame" x="281" y="-1" width="108" height="18"/>
                                                 <buttonCell key="cell" type="check" title="JsonProperty" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4v6-mO-Gkn">
                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -970,7 +993,7 @@ Have a nice day.</string>
                                         </customSpacing>
                                     </stackView>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="029-MT-9Vy">
-                                        <rect key="frame" x="-1" y="47" width="139" height="18"/>
+                                        <rect key="frame" x="-2" y="47" width="143" height="18"/>
                                         <buttonCell key="cell" type="radio" title="Json to Java Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="S8S-Cx-8gB">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -980,7 +1003,7 @@ Have a nice day.</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fhz-vD-UPw">
-                                        <rect key="frame" x="-1" y="23" width="187" height="18"/>
+                                        <rect key="frame" x="-2" y="23" width="191" height="18"/>
                                         <buttonCell key="cell" type="radio" title="Json To Objective-C Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="GZ5-qE-pJz">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -990,7 +1013,7 @@ Have a nice day.</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0f0-Ir-Lb0">
-                                        <rect key="frame" x="-1" y="-1" width="224" height="18"/>
+                                        <rect key="frame" x="-2" y="-1" width="228" height="18"/>
                                         <buttonCell key="cell" type="radio" title="Kotlin Model Code to Swift Model" bezelStyle="regularSquare" imagePosition="left" inset="2" id="EkA-Em-1kg">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1021,7 +1044,7 @@ Have a nice day.</string>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TaA-lr-KQy">
                                         <rect key="frame" x="0.0" y="32" width="288" height="24"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-ah-Sgw">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dmz-ah-Sgw">
                                                 <rect key="frame" x="-2" y="4" width="84" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Model Suffix:" id="iS3-5H-bdg">
                                                     <font key="font" metaFont="system"/>
@@ -1029,7 +1052,7 @@ Have a nice day.</string>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-ai-cCf">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4p-ai-cCf">
                                                 <rect key="frame" x="88" y="0.0" width="200" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="d8Z-YM-Dhe"/>
@@ -1054,7 +1077,7 @@ Have a nice day.</string>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ko-e5-gAQ">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-Pk-AUc">
                                                 <rect key="frame" x="-2" y="4" width="84" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Model Name:" id="8cl-ee-SUv">
                                                     <font key="font" metaFont="system"/>
@@ -1062,7 +1085,7 @@ Have a nice day.</string>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zzl-sD-jgF">
                                                 <rect key="frame" x="88" y="0.0" width="200" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="423-p3-QCk"/>
@@ -1095,10 +1118,10 @@ Have a nice day.</string>
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-Fv-5vx">
-                                <rect key="frame" x="800" y="15" width="182" height="24"/>
+                                <rect key="frame" x="800" y="15" width="182" height="22"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R63-jf-BS6">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="22"/>
                                         <buttonCell key="cell" type="square" title="Copy Model" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sbx-jc-CSA">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1108,7 +1131,7 @@ Have a nice day.</string>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="00d-k9-o5f">
-                                        <rect key="frame" x="91" y="0.0" width="91" height="24"/>
+                                        <rect key="frame" x="91" y="0.0" width="91" height="22"/>
                                         <buttonCell key="cell" type="square" title="Export Model" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ghP-Vr-3Mk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1127,6 +1150,17 @@ Have a nice day.</string>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EtH-xV-7bz">
+                                <rect key="frame" x="911" y="667" width="69" height="28"/>
+                                <buttonCell key="cell" type="square" title="SFTask" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fIS-Rp-l7V">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="5XL-W5-2kg"/>
+                                    <constraint firstAttribute="width" constant="69" id="84z-5r-skX"/>
+                                </constraints>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="KCl-j8-alx" firstAttribute="leading" secondItem="w3T-WP-q05" secondAttribute="leading" id="1ba-hQ-zfh"/>
@@ -1139,8 +1173,10 @@ Have a nice day.</string>
                             <constraint firstAttribute="bottom" secondItem="8iB-yA-OVt" secondAttribute="bottom" constant="15" id="QOy-Ch-hPr"/>
                             <constraint firstItem="w3T-WP-q05" firstAttribute="top" secondItem="KCl-j8-alx" secondAttribute="bottom" constant="13" id="R64-T6-yjI"/>
                             <constraint firstItem="WYR-Fv-5vx" firstAttribute="trailing" secondItem="w3T-WP-q05" secondAttribute="trailing" id="Rg1-12-3nb"/>
+                            <constraint firstAttribute="trailing" secondItem="EtH-xV-7bz" secondAttribute="trailing" constant="20" symbolic="YES" id="VNW-pf-yaC"/>
                             <constraint firstItem="ibE-IB-u9G" firstAttribute="trailing" secondItem="OBJ-FX-YAv" secondAttribute="trailing" id="VZA-97-a9i"/>
                             <constraint firstItem="N2a-xj-83m" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="W8Y-mN-WFm"/>
+                            <constraint firstItem="EtH-xV-7bz" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="7" id="XsV-iL-eKp"/>
                             <constraint firstItem="i07-9g-rgl" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="leading" id="ZGp-1o-EXe"/>
                             <constraint firstItem="EcS-kC-jjw" firstAttribute="leading" secondItem="qZ1-QU-Zfb" secondAttribute="trailing" constant="17" id="Zcc-bE-xGl"/>
                             <constraint firstItem="WYR-Fv-5vx" firstAttribute="centerY" secondItem="8iB-yA-OVt" secondAttribute="centerY" id="aoI-xc-S7G"/>
@@ -1168,6 +1204,7 @@ Have a nice day.</string>
                         <outlet property="outputTv" destination="OBJ-FX-YAv" id="OmI-vh-95q"/>
                         <outlet property="resultLb" destination="N6e-ay-pMo" id="cDS-EG-Pkq"/>
                         <outlet property="serializedBtn" destination="T0S-sk-iID" id="Rk7-9B-awa"/>
+                        <outlet property="yapiJsonToSwiftBtn" destination="T7S-Xm-Ik0" id="d2W-gz-nt3"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

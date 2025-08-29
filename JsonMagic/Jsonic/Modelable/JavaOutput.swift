@@ -11,8 +11,13 @@ import Foundation
 class JavaOutput: Modelable {
     typealias ModelConfig = DefaultModelConfig
     
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: DefaultModelConfig?) -> String {
-        var text =
+    func modelDescription(objectType: Jsonic.DataType, config: ModelConfig?) -> String {
+        guard case Jsonic.DataType.object(let name, let properties, let note) = objectType else { return "" }
+        var text = ""
+        if !note.isEmpty {
+            text += "// \(note)\n"
+        }
+        text +=
             """
             @Data
             @NoArgsConstructor
@@ -23,6 +28,9 @@ class JavaOutput: Modelable {
             text += "    @JsonProperty(\"\(property.name)\")\n"
             let typeDescription = dataTypeDescription(type: property.type)
             let camelCaseName = FormatUtil.underlineToCamelCase(name: property.name)
+            if !property.note.isEmpty {
+                text += "    // \(property.note)\n"
+            }
             text += "    private \(typeDescription) \(camelCaseName));\n"
             if index < properties.count - 1 {
                 text += "\n"
@@ -46,7 +54,7 @@ class JavaOutput: Modelable {
             return "Boolean"
         case .unknown:
             return "String"
-        case .object(let name, _):
+        case .object(let name, _, _):
             return name
         case .array(let itemType):
             let typeDescription = dataTypeDescription(type: itemType)

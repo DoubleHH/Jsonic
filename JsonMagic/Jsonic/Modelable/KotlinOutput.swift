@@ -11,11 +11,19 @@ import Foundation
 class KotlinOutput: Modelable {
     typealias ModelConfig = OutputType.KotlinConfig
     
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: OutputType.KotlinConfig?) -> String {
-        var text = "data class \(name)(\n"
+    func modelDescription(objectType: Jsonic.DataType, config: ModelConfig?) -> String {
+        guard case Jsonic.DataType.object(let name, let properties, let note) = objectType else { return "" }
+        var text = ""
+        if !note.isEmpty {
+            text += "// \(note)\n"
+        }
+        text += "data class \(name)(\n"
         for (index, property) in properties.enumerated() {
             let serializedName = property.name
             let realName = FormatUtil.underlineToCamelCase(name: serializedName)
+            if !property.note.isEmpty {
+                text += "   /** \(property.note) */\n"
+            }
             text += "   "
             if let cfg = config {
                 if cfg.isJsonPropertyEnable {
@@ -50,7 +58,7 @@ class KotlinOutput: Modelable {
             return "Boolean"
         case .unknown:
             return "String"
-        case .object(let name, _):
+        case .object(let name, _, _):
             return name
         case .array(let itemType):
             let typeDescription = dataTypeDescription(type: itemType)

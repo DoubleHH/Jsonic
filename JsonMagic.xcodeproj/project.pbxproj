@@ -23,6 +23,8 @@
 		536C441F25CCC3550050F1A9 /* KotlinOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536C441E25CCC3550050F1A9 /* KotlinOutput.swift */; };
 		53FB990325CB7C3400E8EB71 /* Modelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB990225CB7C3400E8EB71 /* Modelable.swift */; };
 		53FB990725CB7CD000E8EB71 /* ObjetiveCOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53FB990625CB7CD000E8EB71 /* ObjetiveCOutput.swift */; };
+		ADED65322E6197FA008A9E72 /* YapiJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65312E6197FA008A9E72 /* YapiJsonModel.swift */; };
+		ADED65352E619AB9008A9E72 /* SFJSONEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65332E619AB9008A9E72 /* SFJSONEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		536C441E25CCC3550050F1A9 /* KotlinOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KotlinOutput.swift; sourceTree = "<group>"; };
 		53FB990225CB7C3400E8EB71 /* Modelable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modelable.swift; sourceTree = "<group>"; };
 		53FB990625CB7CD000E8EB71 /* ObjetiveCOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjetiveCOutput.swift; sourceTree = "<group>"; };
+		ADED65312E6197FA008A9E72 /* YapiJsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YapiJsonModel.swift; sourceTree = "<group>"; };
+		ADED65332E619AB9008A9E72 /* SFJSONEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFJSONEncoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		288255C82398EB6500A1DE56 /* Jsonic */ = {
 			isa = PBXGroup;
 			children = (
+				ADED65302E6197F1008A9E72 /* Model */,
 				536C441625CCC1CC0050F1A9 /* Utils */,
 				53FB990125CB7BD400E8EB71 /* Modelable */,
 				288255C92398EB7A00A1DE56 /* Jsonic.swift */,
@@ -131,9 +136,26 @@
 			path = Modelable;
 			sourceTree = "<group>";
 		};
+		ADED65302E6197F1008A9E72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADED65312E6197FA008A9E72 /* YapiJsonModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ADED65342E619AB9008A9E72 /* SFJSONEncoder */ = {
+			isa = PBXGroup;
+			children = (
+				ADED65332E619AB9008A9E72 /* SFJSONEncoder.swift */,
+			);
+			path = SFJSONEncoder;
+			sourceTree = "<group>";
+		};
 		B27445C72590956A00DA1FAC /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				ADED65342E619AB9008A9E72 /* SFJSONEncoder */,
 				288255E7239A642800A1DE56 /* FileUtil.swift */,
 			);
 			path = Utils;
@@ -210,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				536C441425CCC17A0050F1A9 /* JavaOutput.swift in Sources */,
+				ADED65352E619AB9008A9E72 /* SFJSONEncoder.swift in Sources */,
 				288255CF2399197C00A1DE56 /* StringExtensions.swift in Sources */,
 				53FB990325CB7C3400E8EB71 /* Modelable.swift in Sources */,
 				536C441C25CCC34A0050F1A9 /* SwiftOutput.swift in Sources */,
@@ -223,6 +246,7 @@
 				536C441F25CCC3550050F1A9 /* KotlinOutput.swift in Sources */,
 				536C441825CCC1E50050F1A9 /* FormatUtil.swift in Sources */,
 				28D61706258F66DB003A9021 /* OutputType.swift in Sources */,
+				ADED65322E6197FA008A9E72 /* YapiJsonModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

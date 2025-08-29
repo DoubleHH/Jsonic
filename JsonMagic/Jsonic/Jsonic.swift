@@ -22,6 +22,7 @@ public class Jsonic: NSObject, Logable {
         case invalidateText
         case notDictionary
         case jsonError(e: Error)
+        case notYapiModel
         
         public var description: String {
             switch self {
@@ -33,17 +34,26 @@ public class Jsonic: NSObject, Logable {
                 return "Transfer String to Dictionary failed"
             case .jsonError(let e):
                 return "JSONError: \(e)"
+            case .notYapiModel:
+                return "Not have res_body, or res_body is not a jsonString"
             }
         }
+    }
+    
+    public enum TextSource {
+        /// 数据json
+        case plainJson
+        /// yapi结构的json
+        case yapiJson
     }
     
     internal indirect enum DataType {
         case string, int, long, double, bool, unknown
         case array(itemType: DataType)
-        case object(name: String, properties: [PropertyDefine])
+        case object(name: String, properties: [PropertyDefine], note: String)
     }
     
-    internal typealias PropertyDefine = (name: String, type: DataType)
+    internal typealias PropertyDefine = (name: String, type: DataType, note: String)
     
     private static let defaultModelSuffix = "Model"
     private var text: String = ""
@@ -70,7 +80,7 @@ public class Jsonic: NSObject, Logable {
     }
     
     public func fullModelContext(outputType: OutputType) -> String? {
-        guard let last = objectDefines.last, case let DataType.object(name, _) = last else { return nil }
+        guard let last = objectDefines.last, case let DataType.object(name, _, _) = last else { return nil }
         let modelDesc = objectDefines.modelTextForPrint(outputType: outputType)
         switch outputType {
         case .swift:
@@ -108,7 +118,7 @@ public class Jsonic: NSObject, Logable {
         return (jsonObj: jsonObj, error: nil)
     }
     
-    func beginParse(text: String, modelName: String, modelSuffix: String = defaultModelSuffix) {
+    func beginParse(text: String, source: TextSource, modelName: String, modelSuffix: String = defaultModelSuffix) {
         self.text = text
         self.modelName = modelName
         if modelSuffix.isEmpty || modelSuffix == " " {
@@ -119,6 +129,35 @@ public class Jsonic: NSObject, Logable {
         objectDefines.removeAll()
         logContent.removeAll()
         
+        switch source {
+        case .plainJson:
+            doDecodePlainJson(text: text)
+        case .yapiJson:
+            doDecodeYapiJson(text: text)
+        }
+    }
+    
+    private func doDecodePlainJson(text: String) {
+        guard let json = decodeJson(text: text) else { return }
+        let type = DataType.object(name: objectName(key: modelName, appendModelName: false), properties: objectProperties(jsonObject: json), note: "")
+        objectDefines.append(type)
+        delegate?.jsonicDidFinished(success: true, error: .none)
+    }
+    
+    private func doDecodeYapiJson(text: String) {
+        guard let json = decodeJson(text: text) else { return }
+        guard let data = json["data"] as? [String: Any],
+                let respText = data["res_body"] as? String,
+                let respData = respText.data(using: .utf8),
+                let yapiModel = try? SFJSONDecoder().decode(YapiJsonModel.self, from: respData) else {
+            delegate?.jsonicDidFinished(success: false, error: .notYapiModel)
+            return
+        }
+        decodeYapiModel(yapiModel: yapiModel)
+        delegate?.jsonicDidFinished(success: true, error: .none)
+    }
+    
+    private func decodeJson(text: String) -> [String: Any]? {
         var jsonObj: Any? = nil
         let originResult = tryJsonObject(text: text)
         if originResult.jsonObj == nil {
@@ -126,13 +165,13 @@ public class Jsonic: NSObject, Logable {
             if !dealTextResult.changed {
                 log("No need to remove note")
                 delegate?.jsonicDidFinished(success: false, error: originResult.error!)
-                return
+                return nil
             }
             log("The text that removed note ============= :\n\(dealTextResult.result)")
             let cleanResult = tryJsonObject(text: dealTextResult.result)
             if cleanResult.jsonObj == nil {
                 delegate?.jsonicDidFinished(success: false, error: originResult.error!)
-                return
+                return nil
             }
             jsonObj = cleanResult.jsonObj
         } else {
@@ -141,21 +180,19 @@ public class Jsonic: NSObject, Logable {
         
         guard var json = jsonObj as? [String: Any] else {
             delegate?.jsonicDidFinished(success: false, error: .notDictionary)
-            return
+            return nil
         }
         if let delegate = self.delegate {
             json = delegate.jsonicPreprocessJsonBeforeTransfer(json: json)
         }
-        let type = DataType.object(name: objectName(key: modelName, appendModelName: false), properties: objectProperties(jsonObject: json))
-        objectDefines.append(type)
-        delegate?.jsonicDidFinished(success: true, error: .none)
+        return json
     }
     
     private func objectProperties(jsonObject: [String: Any]) -> [PropertyDefine] {
         var properties: [PropertyDefine] = []
         for (key, value) in jsonObject {
             let type = getDataType(key: key, value: value)
-            properties.append((name: key.trimmingCharacters(in: .whitespacesAndNewlines), type: type))
+            properties.append((name: key.trimmingCharacters(in: .whitespacesAndNewlines), type: type, note: ""))
         }
         return properties
     }
@@ -163,7 +200,7 @@ public class Jsonic: NSObject, Logable {
     private func getDataType(key: String, value: Any) -> DataType {
         var type: DataType = .string
         defer {
-            if case DataType.object(_, _) = type {
+            if case DataType.object(_, _, _) = type {
                 objectDefines.append(type)
             }
         }
@@ -177,7 +214,7 @@ public class Jsonic: NSObject, Logable {
         case is Double:
             type = .double
         case is [String: Any]:
-            type = .object(name: objectName(key: key), properties: objectProperties(jsonObject: value as! [String: Any]))
+            type = .object(name: objectName(key: key), properties: objectProperties(jsonObject: value as! [String: Any]), note: "")
         case is Array<Any>:
             if let firstValue = (value as? Array<Any>)?.first {
                 type = .array(itemType: getDataType(key: key, value: firstValue))
@@ -204,7 +241,7 @@ public class Jsonic: NSObject, Logable {
     }
     
     public func fileName(outputType: OutputType) -> String? {
-        guard let last = objectDefines.last, case let Jsonic.DataType.object(name, _) = last else { return nil }
+        guard let last = objectDefines.last, case let Jsonic.DataType.object(name, _, _) = last else { return nil }
         return name + "." + outputType.fileType()
     }
     
@@ -216,5 +253,50 @@ public class Jsonic: NSObject, Logable {
             return (result: text, changed: false)
         }
         return (result: lineRemoveList.map( { $0.result } ).joined(separator: "\n"), changed: true)
+    }
+}
+
+/// yapi 解析
+extension Jsonic {
+    func decodeYapiModel(yapiModel: YapiJsonModel) {
+        guard yapiModel.type == .object else { return }
+        
+        let type = Jsonic.DataType.object(name: objectName(key: modelName, appendModelName: false), properties: objectPropertiesFromYapi(jsonObject: yapiModel.properties), note: yapiModel.description ?? "")
+        objectDefines.append(type)
+    }
+    
+    private func objectPropertiesFromYapi(jsonObject: [String: YapiJsonModel]?) -> [PropertyDefine] {
+        var properties: [PropertyDefine] = []
+        guard let jsonObject = jsonObject else { return properties }
+        for (key, value) in jsonObject {
+            let type = getDataTypeFromYapi(key: key, value: value)
+            properties.append((name: key.trimmingCharacters(in: .whitespacesAndNewlines), type: type, note: value.description ?? ""))
+        }
+        return properties
+    }
+    
+    private func getDataTypeFromYapi(key: String, value: YapiJsonModel) -> DataType {
+        var type: DataType = .string
+        defer {
+            if case DataType.object(_, _, _) = type {
+                objectDefines.append(type)
+            }
+        }
+        switch value.type {
+        case .string, .number, .integer:
+            type = .string
+        case .object:
+            type = .object(name: objectName(key: key), properties: objectPropertiesFromYapi(jsonObject: value.properties), note: value.description ?? "")
+        case .array:
+            if let items = value.items, items.type == .object {
+                type = .array(itemType: getDataTypeFromYapi(key: key, value: items))
+            } else {
+                type = .array(itemType: .string)
+            }
+        default:
+            type = .string
+        }
+        
+        return type
     }
 }

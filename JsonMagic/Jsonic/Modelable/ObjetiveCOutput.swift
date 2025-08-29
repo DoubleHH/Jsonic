@@ -14,11 +14,19 @@ class ObjetiveCOutput : Modelable {
     private let objectTypes = ["NSString", "NSArray"]
     private let normalTypes = ["int", "long", "double", "Bool"]
     
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: DefaultModelConfig?) -> String {
+    func modelDescription(objectType: Jsonic.DataType, config: ModelConfig?) -> String {
+        guard case Jsonic.DataType.object(let name, let properties, let note) = objectType else { return "" }
+        var text = ""
+        if !note.isEmpty {
+            text += "// \(note)\n"
+        }
         // interface
-        var text = "@interface \(name): JSONModel {\n"
+        text += "@interface \(name): JSONModel {\n"
         for property in properties {
             let typeDescription = dataTypeDescription(type: property.type)
+            if !property.note.isEmpty {
+                text += "// \(property.note)\n"
+            }
             if isObjectType(typeDescrition: typeDescription) {
                 text += "@property (nonatomic, strong) \(typeDescription) *\(property.name);\n"
             } else {
@@ -54,10 +62,10 @@ class ObjetiveCOutput : Modelable {
             return "Bool"
         case .unknown:
             return "NSString"
-        case .object(let name, _):
+        case .object(let name, _, _):
             return name
         case .array(let itemType):
-            if case .object(_, _) = itemType {
+            if case .object(_, _, _) = itemType {
                 let typeDescription = dataTypeDescription(type: itemType)
                 return "NSArray<" + typeDescription + ">"
             }

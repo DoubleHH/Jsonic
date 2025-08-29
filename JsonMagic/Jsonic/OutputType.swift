@@ -41,16 +41,16 @@ public enum OutputType {
     }
     
     fileprivate func modelDescription(item: Jsonic.DataType) -> String? {
-        guard case let Jsonic.DataType.object(name, properties) = item else { return nil }
+        guard case Jsonic.DataType.object(_, _, _) = item else { return nil }
         switch self {
         case .kotlin(let config):
-            return KotlinOutput().modelDescription(name: name, properties: properties, config: config)
+            return KotlinOutput().modelDescription(objectType: item, config: config)
         case .swift:
-            return SwiftOutput().modelDescription(name: name, properties: properties, config: nil)
+            return SwiftOutput().modelDescription(objectType: item, config: nil)
         case .java:
-            return JavaOutput().modelDescription(name: name, properties: properties, config: nil)
+            return JavaOutput().modelDescription(objectType: item, config: nil)
         case .objectiveC:
-            return ObjetiveCOutput().modelDescription(name: name, properties: properties, config: nil)
+            return ObjetiveCOutput().modelDescription(objectType: item, config: nil)
         }
     }
 }

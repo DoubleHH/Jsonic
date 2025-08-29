@@ -17,6 +17,6 @@ internal class DefaultModelConfig: ModelConfigable { }
 // Generate model class description according to it's definition
 protocol Modelable {
     associatedtype ModelConfig
-    func modelDescription(name: String, properties: [Jsonic.PropertyDefine], config: ModelConfig?) -> String
+    func modelDescription(objectType: Jsonic.DataType, config: ModelConfig?) -> String
     func dataTypeDescription(type: Jsonic.DataType) -> String
 }
