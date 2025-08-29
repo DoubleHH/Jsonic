@@ -190,8 +190,9 @@ public class Jsonic: NSObject, Logable {
     
     private func objectProperties(jsonObject: [String: Any]) -> [PropertyDefine] {
         var properties: [PropertyDefine] = []
-        for (key, value) in jsonObject {
-            let type = getDataType(key: key, value: value)
+        let sortedKeys = jsonObject.keys.sorted()
+        for key in sortedKeys {
+            let type = getDataType(key: key, value: jsonObject[key]!)
             properties.append((name: key.trimmingCharacters(in: .whitespacesAndNewlines), type: type, note: ""))
         }
         return properties
